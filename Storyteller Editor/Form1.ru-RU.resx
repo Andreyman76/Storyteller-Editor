@@ -184,7 +184,7 @@
   <data name="changeIdButton.Text" xml:space="preserve">
     <value>Изменить id</value>
   </data>
-  <data name="copyFromClipboardButton.Text" xml:space="preserve">
+  <data name="pasteFromClipboardButton.Text" xml:space="preserve">
     <value>Вставить из буфера</value>
   </data>
   <data name="markAsRootButton.Text" xml:space="preserve">
