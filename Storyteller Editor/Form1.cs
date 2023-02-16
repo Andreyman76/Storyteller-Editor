@@ -216,7 +216,7 @@ namespace Storyteller_Editor
             storyGroup.Visible = true;
         }
 
-        private void graphPictureMouseDown(object sender, MouseEventArgs e)
+        private void GraphPictureMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {

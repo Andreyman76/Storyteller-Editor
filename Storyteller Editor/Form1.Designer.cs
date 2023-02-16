@@ -75,7 +75,7 @@ namespace Storyteller_Editor
             resources.ApplyResources(this.graphPicture, "graphPicture");
             this.graphPicture.Name = "graphPicture";
             this.graphPicture.TabStop = false;
-            this.graphPicture.MouseDown += new System.Windows.Forms.MouseEventHandler(this.graphPictureMouseDown);
+            this.graphPicture.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GraphPictureMouseDown);
             this.graphPicture.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GraphPictureMouseMove);
             this.graphPicture.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GraphPictureMouseUp);
             this.graphPicture.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.GraphPictureMouseWheel);
