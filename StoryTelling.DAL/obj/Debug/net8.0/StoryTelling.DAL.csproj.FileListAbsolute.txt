@@ -1,0 +1,13 @@
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.DAL\bin\Debug\net8.0\StoryTelling.DAL.deps.json
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.DAL\bin\Debug\net8.0\StoryTelling.DAL.dll
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.DAL\bin\Debug\net8.0\StoryTelling.DAL.pdb
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.DAL\obj\Debug\net8.0\StoryTelling.DAL.csproj.AssemblyReference.cache
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.DAL\obj\Debug\net8.0\StoryTelling.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.DAL\obj\Debug\net8.0\StoryTelling.DAL.AssemblyInfoInputs.cache
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.DAL\obj\Debug\net8.0\StoryTelling.DAL.AssemblyInfo.cs
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.DAL\obj\Debug\net8.0\StoryTelling.DAL.csproj.CoreCompileInputs.cache
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.DAL\obj\Debug\net8.0\StoryTelling.DAL.sourcelink.json
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.DAL\obj\Debug\net8.0\StoryTelling.DAL.dll
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.DAL\obj\Debug\net8.0\refint\StoryTelling.DAL.dll
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.DAL\obj\Debug\net8.0\StoryTelling.DAL.pdb
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.DAL\obj\Debug\net8.0\ref\StoryTelling.DAL.dll
