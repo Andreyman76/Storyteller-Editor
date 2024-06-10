@@ -32,5 +32,5 @@ public class StoryContext : DbContext
         options.UseSqlite(connection);
     }
 
-    
+
 }

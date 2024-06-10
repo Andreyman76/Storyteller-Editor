@@ -1,12 +1,10 @@
-﻿using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 using StoryTelling.DAL;
 using StoryTelling.Entities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -22,10 +20,10 @@ public partial class MainForm : Form
     private readonly Image _blankImage = new Bitmap(100, 100);
     private readonly List<Node> _nodes = [];
     private int _nodesCounter = 0;
-    private Node _selected = null;
-    private Node _grabbed = null;
+    private Node? _selected = null;
+    private Node? _grabbed = null;
     private Point _pivotOffset;
-    private Node _transitionFrom = null;
+    private Node? _transitionFrom = null;
     private readonly List<Transition> _transitions = [];
     private int _fontSize = 16;
     private Point _offsetStart = new();
@@ -38,7 +36,7 @@ public partial class MainForm : Form
         InitializeComponent();
     }
 
-    private void Form1Load(object sender, EventArgs e)
+    private void OnFormLoad(object sender, EventArgs e)
     {
         File.Delete(_dbFileName);
         storyGroup.Visible = false;
@@ -48,23 +46,10 @@ public partial class MainForm : Form
         context.SaveChanges();
     }
 
-    private static void DrawArrow(PointF from, PointF to, Graphics g)
-    {
-        g.DrawLine(Pens.Red, from, to);
-        var vect = new PointF(to.X - from.X, to.Y - from.Y);
-        var length = (float)Math.Sqrt(vect.X * vect.X + vect.Y * vect.Y);
-        vect = new PointF(vect.X / length, vect.Y / length);
-        var normal = new PointF(vect.Y * 5, -vect.X * 5);
-
-        var pos = new PointF(to.X - vect.X * 15, to.Y - vect.Y * 15);
-        g.DrawLine(Pens.Red, to, new PointF(pos.X - normal.X, pos.Y - normal.Y));
-        g.DrawLine(Pens.Red, to, new PointF(pos.X + normal.X, pos.Y + normal.Y));
-    }
-
     private void DrawNodes()
     {
         Image img = new Bitmap(graphPicture.Width, graphPicture.Height);
-        var g = Graphics.FromImage(img);
+        using var g = Graphics.FromImage(img);
 
         foreach (var node in _nodes)
         {
@@ -76,7 +61,10 @@ public partial class MainForm : Form
             var from = _nodes.Find(x => x.Name == transition.From);
             var to = _nodes.Find(x => x.Name == transition.To);
 
-            DrawArrow(from.GetBorderPoint(to.Center()), to.GetBorderPoint(from.Center()), g);
+            if (from != null && to != null)
+            {
+                g.DrawArrow(from.GetBorderPoint(to.Center()), to.GetBorderPoint(from.Center()));
+            }
         }
 
         graphPicture.Image = img;
@@ -105,7 +93,7 @@ public partial class MainForm : Form
         return true;
     }
 
-    private void CreateNewToolStripMenuItemClick(object sender, EventArgs e)
+    private void OnCreateNewToolStripMenuItemClick(object sender, EventArgs e)
     {
         string id;
 
@@ -136,15 +124,15 @@ public partial class MainForm : Form
         context.SaveChanges();
     }
 
-    private void Form1FormClosing(object sender, FormClosingEventArgs e)
+    private void OnFormClosing(object sender, FormClosingEventArgs e)
     {
         if (MessageBox.Show(MyStrings.SaveBeforeClosing, MyStrings.Confirm, MessageBoxButtons.YesNo) == DialogResult.Yes)
         {
-            SaveProjectToolStripMenuItemClick(sender, e);
+            OnSaveProjectToolStripMenuItemClick(sender, e);
         }
     }
 
-    private Node GetNode(Point position)
+    private Node? GetNode(Point position)
     {
         foreach (var node in _nodes)
         {
@@ -157,9 +145,9 @@ public partial class MainForm : Form
         return null;
     }
 
-    private void DisplayTransitions(Node node)
+    private void DisplayTransitions(Node? node)
     {
-        var transitions = _transitions.FindAll(x => x.From == node.Name);
+        var transitions = _transitions.FindAll(x => x.From == node?.Name);
 
         transitionsList.Items.Clear();
 
@@ -169,7 +157,7 @@ public partial class MainForm : Form
         }
     }
 
-    private void DisplayNode(Node node)
+    private void DisplayNode(Node? node)
     {
         if (node == null)
         {
@@ -191,7 +179,7 @@ public partial class MainForm : Form
         }
         else
         {
-            previewPicture.Image = BytesToImage(n.Image);
+            previewPicture.Image = n.Image.CreateImage();
         }
 
         DisplayTransitions(node);
@@ -199,7 +187,7 @@ public partial class MainForm : Form
         storyGroup.Visible = true;
     }
 
-    private void GraphPictureMouseDown(object sender, MouseEventArgs e)
+    private void OnGraphPictureMouseDown(object sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Left)
         {
@@ -280,7 +268,7 @@ public partial class MainForm : Form
         }
     }
 
-    private void GraphPictureMouseUp(object sender, MouseEventArgs e)
+    private void OnGraphPictureMouseUp(object sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Left)
         {
@@ -295,7 +283,7 @@ public partial class MainForm : Form
         }
     }
 
-    private void GraphPictureMouseMove(object sender, MouseEventArgs e)
+    private void OnGraphPictureMouseMove(object sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Middle)
         {
@@ -322,12 +310,19 @@ public partial class MainForm : Form
         if (_transitionFrom != null)
         {
             DrawNodes();
-            DrawArrow(_transitionFrom.GetBorderPoint(e.Location), e.Location, Graphics.FromImage(graphPicture.Image));
+
+            using var g = Graphics.FromImage(graphPicture.Image);
+            g.DrawArrow(_transitionFrom.GetBorderPoint(e.Location), e.Location);
         }
     }
 
-    private void TextBoxTextChanged(object sender, EventArgs e)
+    private void OnTextBoxTextChanged(object sender, EventArgs e)
     {
+        if (_selected == null)
+        {
+            return;
+        }
+
         using var context = new StoryContext(_dbFileName);
 
         var node = context.Nodes.Where(x => x.Name == _selected.Name).First();
@@ -335,8 +330,13 @@ public partial class MainForm : Form
         context.SaveChanges();
     }
 
-    private void ChangeIdButtonClick(object sender, EventArgs e)
+    private void OnChangeIdButtonClick(object sender, EventArgs e)
     {
+        if (_selected == null)
+        {
+            return;
+        }
+
         var newName = Interaction.InputBox(MyStrings.EnterNewStoryId.Replace("@id", _selected.Name));
 
         if (!ValidateStringLength(newName, 50))
@@ -370,36 +370,14 @@ public partial class MainForm : Form
         }
     }
 
-    private static byte[] ImageToBytes(Image image)
+    private void SetImageToSelectedNode(Image? img)
     {
-        if (image == null)
+        if (_selected == null)
         {
-            return null;
+            return;
         }
 
-        using var ms = new MemoryStream();
-        var format = image.RawFormat;
-
-        if (format.Equals(ImageFormat.MemoryBmp))
-        {
-            format = ImageFormat.Png;
-        }
-
-        image.Save(ms, format);
-        var imageBytes = ms.ToArray();
-
-        return imageBytes;
-    }
-
-    private static Bitmap BytesToImage(byte[] imageBytes)
-    {
-        using var ms = new MemoryStream(imageBytes);
-        return new Bitmap(ms);
-    }
-
-    private void SetImageToSelectedNode(Image img)
-    {
-        var blob = ImageToBytes(img);
+        var blob = img?.ToBytes();
         using var context = new StoryContext(_dbFileName);
 
         var node = context.Nodes.Where(x => x.Name == _selected.Name).First();
@@ -414,11 +392,11 @@ public partial class MainForm : Form
         }
         else
         {
-            previewPicture.Image = BytesToImage(node.Image);
+            previewPicture.Image = node.Image.CreateImage();
         }
     }
 
-    private void SelectImageButtonClick(object sender, EventArgs e)
+    private void OnSelectImageButtonClick(object sender, EventArgs e)
     {
         selectImageFileDialog.FileName = "";
         selectImageFileDialog.Filter = MyStrings.ImageFiles;
@@ -435,7 +413,7 @@ public partial class MainForm : Form
         }
     }
 
-    private void PasteFromClipboardButtonClick(object sender, EventArgs e)
+    private void OnPasteFromClipboardButtonClick(object sender, EventArgs e)
     {
         var img = Clipboard.GetImage();
 
@@ -445,19 +423,29 @@ public partial class MainForm : Form
         }
     }
 
-    private void RemoveImageButtonClick(object sender, EventArgs e)
+    private void OnRemoveImageButtonClick(object sender, EventArgs e)
     {
         SetImageToSelectedNode(null);
     }
 
-    private void MarkAsRootButtonClick(object sender, EventArgs e)
+    private void OnMarkAsRootButtonClick(object sender, EventArgs e)
     {
+        if (_selected == null)
+        {
+            return;
+        }
+
         Node.Root = _selected.Name;
         DrawNodes();
     }
 
-    private void RemoveSelectedToolStripMenuItemClick(object sender, EventArgs e)
+    private void OnRemoveSelectedToolStripMenuItemClick(object sender, EventArgs e)
     {
+        if (_selected == null)
+        {
+            return;
+        }
+
         using var context = new StoryContext(_dbFileName);
         var node = context.Nodes.Where(x => x.Name == _selected.Name).First();
         context.Nodes.Remove(node);
@@ -476,7 +464,7 @@ public partial class MainForm : Form
         DrawNodes();
     }
 
-    private void GraphPictureMouseWheel(object sender, MouseEventArgs e)
+    private void OnGraphPictureMouseWheel(object sender, MouseEventArgs e)
     {
         _fontSize += e.Delta > 0 ? 1 : -1;
 
@@ -490,7 +478,7 @@ public partial class MainForm : Form
         DrawNodes();
     }
 
-    private void ChangeTransitionNameButtonClick(object sender, EventArgs e)
+    private void OnChangeTransitionNameButtonClick(object sender, EventArgs e)
     {
         var index = transitionsList.SelectedIndex;
 
@@ -500,8 +488,8 @@ public partial class MainForm : Form
             return;
         }
 
-        var transition = transitionsList.Items[index] as Transition;
-        var newName = Interaction.InputBox(MyStrings.NewTransitionName.Replace("@transition", transition.ToString()));
+        var transition = transitionsList.Items[index] as Transition ?? throw new Exception("Convert to Transition failed");
+        var newName = Interaction.InputBox(MyStrings.NewTransitionName.Replace("@transition", transition?.ToString()));
 
         if (!ValidateStringLength(newName, 50))
         {
@@ -510,14 +498,14 @@ public partial class MainForm : Form
 
         if (string.IsNullOrWhiteSpace(newName) == false)
         {
-            if (_transitions.Find(x => x.From == transition.From && x.Name == newName) != null)
+            if (_transitions.Find(x => x.From == transition?.From && x.Name == newName) != null)
             {
-                MessageBox.Show(MyStrings.TransitionExists.Replace("@id", transition.From));
+                MessageBox.Show(MyStrings.TransitionExists.Replace("@id", transition?.From));
                 return;
             }
 
             using var context = new StoryContext(_dbFileName);
-            var t = context.Transitions.Where(x => x.Name == transition.Name).First();
+            var t = context.Transitions.Where(x => x.Name == transition!.Name).First();
             t.Name = newName;
             context.SaveChanges();
 
@@ -526,7 +514,7 @@ public partial class MainForm : Form
         }
     }
 
-    private void RemoveTransitionButtonClick(object sender, EventArgs e)
+    private void OnRemoveTransitionButtonClick(object sender, EventArgs e)
     {
         var index = transitionsList.SelectedIndex;
 
@@ -536,7 +524,7 @@ public partial class MainForm : Form
             return;
         }
 
-        var transition = transitionsList.Items[index] as Transition;
+        var transition = transitionsList.Items[index] as Transition ?? throw new Exception("Convert to Transition failed");
 
         using var context = new StoryContext(_dbFileName);
         var t = context.Transitions.Where(x => x.Name == transition.Name).First();
@@ -548,7 +536,7 @@ public partial class MainForm : Form
         DrawNodes();
     }
 
-    private void SaveProjectToolStripMenuItemClick(object sender, EventArgs e)
+    private void OnSaveProjectToolStripMenuItemClick(object sender, EventArgs e)
     {
         saveProjectFileDialog.Title = MyStrings.SaveProject;
         saveProjectFileDialog.DefaultExt = "stp";
@@ -584,7 +572,7 @@ public partial class MainForm : Form
         }
     }
 
-    private void OpenProjectToolStripMenuItemClick(object sender, EventArgs e)
+    private void OnOpenProjectToolStripMenuItemClick(object sender, EventArgs e)
     {
         openProjectFileDialog.Title = MyStrings.OpenProject;
         openProjectFileDialog.FileName = string.Empty;
@@ -619,7 +607,7 @@ public partial class MainForm : Form
         }
     }
 
-    private void ExportToolStripMenuItemClick(object sender, EventArgs e)
+    private void OnExportToolStripMenuItemClick(object sender, EventArgs e)
     {
         if (Node.Root == null)
         {
@@ -648,12 +636,12 @@ public partial class MainForm : Form
         }
     }
 
-    private void EnglishToolStripMenuItemClick(object sender, EventArgs e)
+    private void OnEnglishToolStripMenuItemClick(object sender, EventArgs e)
     {
         ChangeLanguage("en-US");
     }
 
-    private void RussianToolStripMenuItemClick(object sender, EventArgs e)
+    private void OnRussianToolStripMenuItemClick(object sender, EventArgs e)
     {
         ChangeLanguage("ru-RU");
     }

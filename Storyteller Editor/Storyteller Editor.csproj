@@ -10,6 +10,7 @@
         <NeutralLanguage>ru</NeutralLanguage>
         <DebugType>embedded</DebugType>
         <TieredPGO>true</TieredPGO>
+      <Nullable>enable</Nullable>
       	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
     </PropertyGroup>
