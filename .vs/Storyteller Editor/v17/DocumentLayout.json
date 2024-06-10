@@ -1,32 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{95BA25E6-0AC7-4AA8-A898-C04F79CB5E7A}|Storyteller Editor\\Storyteller Editor.csproj|c:\\users\\alphatech\\source\\repos\\storyteller-editor\\storyteller editor\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{95BA25E6-0AC7-4AA8-A898-C04F79CB5E7A}|Storyteller Editor\\Storyteller Editor.csproj|solutionrelative:storyteller editor\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{95BA25E6-0AC7-4AA8-A898-C04F79CB5E7A}|Storyteller Editor\\Storyteller Editor.csproj|c:\\users\\alphatech\\source\\repos\\storyteller-editor\\storyteller editor\\extensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{95BA25E6-0AC7-4AA8-A898-C04F79CB5E7A}|Storyteller Editor\\Storyteller Editor.csproj|solutionrelative:storyteller editor\\extensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53B2429F-F892-4B8D-9DBE-F6E0439AF4EA}|StoryTelling.Entites\\StoryTelling.Entites.csproj|c:\\users\\alphatech\\source\\repos\\storyteller-editor\\storytelling.entites\\node.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53B2429F-F892-4B8D-9DBE-F6E0439AF4EA}|StoryTelling.Entites\\StoryTelling.Entites.csproj|solutionrelative:storytelling.entites\\node.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{95BA25E6-0AC7-4AA8-A898-C04F79CB5E7A}|Storyteller Editor\\Storyteller Editor.csproj|C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\storyteller editor\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{95BA25E6-0AC7-4AA8-A898-C04F79CB5E7A}|Storyteller Editor\\Storyteller Editor.csproj|solutionrelative:storyteller editor\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53B2429F-F892-4B8D-9DBE-F6E0439AF4EA}|StoryTelling.Entites\\StoryTelling.Entites.csproj|c:\\users\\alphatech\\source\\repos\\storyteller-editor\\storytelling.entites\\transition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53B2429F-F892-4B8D-9DBE-F6E0439AF4EA}|StoryTelling.Entites\\StoryTelling.Entites.csproj|solutionrelative:storytelling.entites\\transition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03B2711E-EDC8-45DC-9E68-512A091EBDD7}|StoryTelling.DAL\\StoryTelling.DAL.csproj|c:\\users\\alphatech\\source\\repos\\storyteller-editor\\storytelling.dal\\projectsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03B2711E-EDC8-45DC-9E68-512A091EBDD7}|StoryTelling.DAL\\StoryTelling.DAL.csproj|solutionrelative:storytelling.dal\\projectsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -34,36 +9,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainForm.cs",
-              "DocumentMoniker": "C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\Storyteller Editor\\MainForm.cs",
-              "RelativeDocumentMoniker": "Storyteller Editor\\MainForm.cs",
-              "ToolTip": "C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\Storyteller Editor\\MainForm.cs",
-              "RelativeToolTip": "Storyteller Editor\\MainForm.cs",
-              "ViewState": "AQIAAF8AAAAAAAAAAIA0wJUAAAA0AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T04:14:12.189Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Node.cs",
-              "DocumentMoniker": "C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\StoryTelling.Entites\\Node.cs",
-              "RelativeDocumentMoniker": "StoryTelling.Entites\\Node.cs",
-              "ToolTip": "C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\StoryTelling.Entites\\Node.cs",
-              "RelativeToolTip": "StoryTelling.Entites\\Node.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAowCAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T05:59:07.312Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -75,54 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:135:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Extensions.cs",
-              "DocumentMoniker": "C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\Storyteller Editor\\Extensions.cs",
-              "RelativeDocumentMoniker": "Storyteller Editor\\Extensions.cs",
-              "ToolTip": "C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\Storyteller Editor\\Extensions.cs",
-              "RelativeToolTip": "Storyteller Editor\\Extensions.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T08:26:12.233Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
-              "DocumentMoniker": "C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\Storyteller Editor\\MainForm.cs",
-              "RelativeDocumentMoniker": "Storyteller Editor\\MainForm.cs",
-              "ToolTip": "C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\Storyteller Editor\\MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
-              "RelativeToolTip": "Storyteller Editor\\MainForm.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T08:10:46.294Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Transition.cs",
-              "DocumentMoniker": "C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\StoryTelling.Entites\\Transition.cs",
-              "RelativeDocumentMoniker": "StoryTelling.Entites\\Transition.cs",
-              "ToolTip": "C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\StoryTelling.Entites\\Transition.cs",
-              "RelativeToolTip": "StoryTelling.Entites\\Transition.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAkwAgAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T06:02:37.758Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ProjectSettings.cs",
-              "DocumentMoniker": "C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\StoryTelling.DAL\\ProjectSettings.cs",
-              "RelativeDocumentMoniker": "StoryTelling.DAL\\ProjectSettings.cs",
-              "ToolTip": "C:\\Users\\AlphaTech\\source\\repos\\Storyteller-Editor\\StoryTelling.DAL\\ProjectSettings.cs",
-              "RelativeToolTip": "StoryTelling.DAL\\ProjectSettings.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAgAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-10T04:18:03.204Z"
             }
           ]
         }

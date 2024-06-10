@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StoryTelling.Entites")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d6958225be6a963267f95b7ede2f88652f2dc4c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7fb103e8c9a18d2b2064e08d511210baebc59ed")]
 [assembly: System.Reflection.AssemblyProductAttribute("StoryTelling.Entites")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StoryTelling.Entites")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
