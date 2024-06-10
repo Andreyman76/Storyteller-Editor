@@ -1,25 +1,9 @@
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\Storyteller Editor.exe
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\Storyteller Editor.dll.config
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\Storyteller Editor.deps.json
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\Storyteller Editor.runtimeconfig.json
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\Storyteller Editor.dll
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\ru-RU\Storyteller Editor.resources.dll
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\Microsoft.Data.Sqlite.dll
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\SQLitePCLRaw.core.dll
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.csproj.AssemblyReference.cache
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller_Editor.MyStrings.resources
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller_Editor.Properties.Resources.resources
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller_Editor.MyStrings.ru-RU.resources
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.csproj.GenerateResource.cache
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.csproj.CoreCompileInputs.cache
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.sourcelink.json
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\ru-RU\Storyteller Editor.resources.dll
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storytel.07B91F11.Up2Date
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.dll
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\refint\Storyteller Editor.dll
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.genruntimeconfig.cache
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\ref\Storyteller Editor.dll
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.dll
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
@@ -35,7 +19,9 @@ C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\SQLitePCLRaw.batteries_v2.dll
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\SQLitePCLRaw.core.dll
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\System.Drawing.Common.dll
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\runtimes\browser-wasm\nativeassets\net8.0\e_sqlite3.a
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\runtimes\linux-arm\native\libe_sqlite3.so
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\runtimes\linux-arm64\native\libe_sqlite3.so
@@ -57,9 +43,20 @@ C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\StoryTelling.DAL.dll
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\StoryTelling.DAL.pdb
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\StoryTelling.Editor.MainForm.resources
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\StoryTelling.Editor.MainForm.ru-RU.resources
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\System.Drawing.Common.dll
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\StoryTelling.Entites.dll
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\bin\Debug\net8.0-windows\StoryTelling.Entites.pdb
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.csproj.AssemblyReference.cache
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\StoryTelling.Editor.MainForm.resources
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller_Editor.MyStrings.resources
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller_Editor.Properties.Resources.resources
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\StoryTelling.Editor.MainForm.ru-RU.resources
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller_Editor.MyStrings.ru-RU.resources
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.csproj.GenerateResource.cache
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.csproj.CoreCompileInputs.cache
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.sourcelink.json
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\ru-RU\Storyteller Editor.resources.dll
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storytel.07B91F11.Up2Date
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.dll
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\refint\Storyteller Editor.dll
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\Storyteller Editor.genruntimeconfig.cache
+C:\Users\AlphaTech\source\repos\Storyteller-Editor\Storyteller Editor\obj\Debug\net8.0-windows\ref\Storyteller Editor.dll

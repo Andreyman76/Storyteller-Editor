@@ -3,14 +3,13 @@
         <TargetFramework>net8.0-windows</TargetFramework>
         <OutputType>WinExe</OutputType>
         <UseWindowsForms>true</UseWindowsForms>
-
         <LangVersion>preview</LangVersion>
         <AnalysisLevel>latest</AnalysisLevel>
         <SatelliteResourceLanguages>en;ru</SatelliteResourceLanguages>
         <NeutralLanguage>ru</NeutralLanguage>
         <DebugType>embedded</DebugType>
         <TieredPGO>true</TieredPGO>
-      <Nullable>enable</Nullable>
+        <Nullable>enable</Nullable>
       	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
     </PropertyGroup>

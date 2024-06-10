@@ -1,8 +1,6 @@
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\bin\Debug\net8.0-windows\StoryTelling.Entites.deps.json
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\bin\Debug\net8.0-windows\StoryTelling.Entites.dll
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\bin\Debug\net8.0-windows\StoryTelling.Entites.pdb
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\bin\Debug\net8.0-windows\StoryTelling.DAL.dll
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\bin\Debug\net8.0-windows\StoryTelling.DAL.pdb
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\obj\Debug\net8.0-windows\StoryTelling.Entites.csproj.AssemblyReference.cache
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\obj\Debug\net8.0-windows\StoryTelling.Entites.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\obj\Debug\net8.0-windows\StoryTelling.Entites.AssemblyInfoInputs.cache
@@ -12,5 +10,4 @@ C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\obj\Debu
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\obj\Debug\net8.0-windows\StoryTel.B093532A.Up2Date
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\obj\Debug\net8.0-windows\StoryTelling.Entites.dll
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\obj\Debug\net8.0-windows\refint\StoryTelling.Entites.dll
-C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\obj\Debug\net8.0-windows\StoryTelling.Entites.pdb
 C:\Users\AlphaTech\source\repos\Storyteller-Editor\StoryTelling.Entites\obj\Debug\net8.0-windows\ref\StoryTelling.Entites.dll
