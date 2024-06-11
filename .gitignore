@@ -406,3 +406,20 @@ FodyWeavers.xsd
 *.sln.iml
 /.vs/Storyteller Editor/v17/.suo
 /.vs/Storyteller Editor/v17/DocumentLayout.json
+/StoryTelling.Entites/obj/Debug/net8.0-windows/ref/StoryTelling.Entites.dll
+/StoryTelling.Entites/obj/Debug/net8.0-windows/StoryTelling.Entites.dll
+/Storyteller Editor/obj/Debug/net8.0-windows/ru-RU/Storyteller Editor.resources.dll
+/Storyteller Editor/obj/Debug/net8.0-windows/Storyteller Editor.dll
+/Storyteller Editor/obj/Debug/net8.0-windows/Storyteller Editor.sourcelink.json
+/Storyteller Editor/obj/Debug/net8.0-windows/Storyteller Editor.csproj.AssemblyReference.cache
+/StoryTelling.Entites/obj/Debug/net8.0-windows/refint/StoryTelling.Entites.dll
+/StoryTelling.Entites/obj/Debug/net8.0-windows/StoryTelling.Entites.AssemblyInfo.cs
+/StoryTelling.Entites/obj/Debug/net8.0-windows/StoryTelling.Entites.AssemblyInfoInputs.cache
+/StoryTelling.Entites/obj/Debug/net8.0-windows/StoryTelling.Entites.csproj.AssemblyReference.cache
+/StoryTelling.Entites/obj/Debug/net8.0-windows/StoryTelling.Entites.sourcelink.json
+/StoryTelling.Entites/bin/Debug/net8.0-windows/StoryTelling.DAL.dll
+/StoryTelling.Entites/bin/Debug/net8.0-windows/StoryTelling.Entites.dll
+/Storyteller Editor/bin/Debug/net8.0-windows/StoryTelling.Entites.dll
+/Storyteller Editor/bin/Debug/net8.0-windows/ru-RU/Storyteller Editor.resources.dll
+/Storyteller Editor/bin/Debug/net8.0-windows/Storyteller Editor.dll
+/Storyteller Editor/bin/Debug/net8.0-windows/StoryTelling.DAL.dll
