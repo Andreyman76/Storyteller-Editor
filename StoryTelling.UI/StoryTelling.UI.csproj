@@ -17,4 +17,17 @@
       <ProjectReference Include="..\StoryTelling.DAL\StoryTelling.DAL.csproj" />
       <ProjectReference Include="..\StoryTelling.Entites\StoryTelling.Entites.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Properties\Settings.Designer.cs">
+        <DesignTimeSharedInput>True</DesignTimeSharedInput>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Settings.settings</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <None Update="Properties\Settings.settings">
+        <Generator>SettingsSingleFileGenerator</Generator>
+        <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      </None>
+    </ItemGroup>
 </Project>

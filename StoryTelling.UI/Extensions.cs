@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace StoryTelling.Editor;
+namespace StoryTelling.UI;
 
 public static class Extensions
 {

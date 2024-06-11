@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace StoryTelling.Editor;
+namespace StoryTelling.UI;
 
 static class Program
 {

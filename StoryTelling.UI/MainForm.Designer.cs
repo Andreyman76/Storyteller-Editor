@@ -1,5 +1,5 @@
 ﻿
-namespace StoryTelling.Editor;
+namespace StoryTelling.UI;
 
 partial class MainForm
 {

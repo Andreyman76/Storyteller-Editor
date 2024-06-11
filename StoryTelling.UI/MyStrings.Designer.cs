@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StoryTelling.Editor;
+namespace StoryTelling.UI;
 
 /// <summary>
 ///   Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
@@ -42,7 +42,7 @@ internal class MyStrings
         {
             if (object.ReferenceEquals(resourceMan, null))
             {
-                global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Storyteller_Editor.MyStrings", typeof(MyStrings).Assembly);
+                global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("StoryTelling.UI.MyStrings", typeof(MyStrings).Assembly);
                 resourceMan = temp;
             }
             return resourceMan;

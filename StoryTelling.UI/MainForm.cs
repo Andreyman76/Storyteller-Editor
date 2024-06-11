@@ -12,7 +12,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace StoryTelling.Editor;
+namespace StoryTelling.UI;
 
 public partial class MainForm : Form
 {
@@ -136,9 +136,11 @@ public partial class MainForm : Form
 
     private void OnFormClosing(object sender, FormClosingEventArgs e)
     {
-        if (MessageBox.Show(MyStrings.SaveBeforeClosing, MyStrings.Confirm, MessageBoxButtons.YesNo) == DialogResult.Yes)
+        var result = MessageBox.Show(MyStrings.SaveBeforeClosing, MyStrings.Confirm, MessageBoxButtons.YesNo);
+
+        if (result == DialogResult.Yes)
         {
-            OnSaveProjectToolStripMenuItemClick(sender, e);
+            SaveProject();
         }
     }
 
@@ -544,6 +546,11 @@ public partial class MainForm : Form
     }
 
     private void OnSaveProjectToolStripMenuItemClick(object sender, EventArgs e)
+    {
+        SaveProject();
+    }
+
+    private void SaveProject()
     {
         saveProjectFileDialog.Title = MyStrings.SaveProject;
         saveProjectFileDialog.Filter = MyStrings.ProjectFile;
