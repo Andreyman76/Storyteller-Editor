@@ -1,4 +1,4 @@
-﻿using StoryTelling.DAL;
+﻿using StoryTelling.DAL.Project;
 
 namespace StoryTelling.Entities;
 
@@ -13,7 +13,7 @@ public class Transition(string name, string from, string to)
         return $"\"{Name}\" -> \"{To}\"";
     }
 
-    public static implicit operator Transition(StoryTransition transition)
+    public static implicit operator Transition(ProjectTransition transition)
     {
         return new Transition(transition.Name, transition.From.Name, transition.To.Name);
     }

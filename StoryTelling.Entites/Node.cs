@@ -1,89 +1,72 @@
-﻿using StoryTelling.DAL;
+﻿using StoryTelling.DAL.Project;
 using System.Drawing;
 
 namespace StoryTelling.Entities;
 
 public class Node(string name, Point position)
 {
-    public static Font CurrentFont { get; set; } = new Font("Arial", 16);
-    public static string? Root { get; set; }
     public string Name { get; set; } = name;
     public Point Position { get; set; } = position;
+    public RectangleF Border { get; set; }
 
-    private RectangleF _rect;
-
-    public static implicit operator Node(StoryNode node)
+    public static implicit operator Node(ProjectNode node)
     {
         return new Node(node.Name, new Point(node.X, node.Y));
     }
 
-    public void Draw(Graphics g)
-    {
-        SizeF size = g.MeasureString(Name, CurrentFont);
-
-        if (string.IsNullOrWhiteSpace(Root) == false && Name == Root)
-        {
-            g.FillRectangle(Brushes.Green, Position.X, Position.Y, size.Width, size.Height);
-        }
-
-        g.DrawString(Name, CurrentFont, Brushes.Black, Position);
-        g.DrawRectangle(Pens.Black, Position.X, Position.Y, size.Width, size.Height);
-        _rect = new RectangleF(Position.X, Position.Y, size.Width, size.Height);
-    }
-
     public PointF Center()
     {
-        return new PointF((_rect.X * 2 + _rect.Width) / 2, (_rect.Y * 2 + _rect.Height) / 2);
+        return new PointF((Border.X * 2 + Border.Width) / 2, (Border.Y * 2 + Border.Height) / 2);
     }
 
-    public PointF GetBorderPoint(PointF from)
+    public PointF GetPointOnBorder(PointF from)
     {
         var center = Center();
 
         var p1 = new PointF();
         var p2 = new PointF();
 
-        if (from.Y < _rect.Top)
+        if (from.Y < Border.Top)
         {
-            p1 = new PointF(_rect.Left, _rect.Top);
-            p2 = new PointF(_rect.Right, _rect.Top);
+            p1 = new PointF(Border.Left, Border.Top);
+            p2 = new PointF(Border.Right, Border.Top);
 
         }
-        else if (from.Y > _rect.Bottom)
+        else if (from.Y > Border.Bottom)
         {
-            p1 = new PointF(_rect.Left, _rect.Bottom);
-            p2 = new PointF(_rect.Right, _rect.Bottom);
+            p1 = new PointF(Border.Left, Border.Bottom);
+            p2 = new PointF(Border.Right, Border.Bottom);
         }
 
-        var result = IntersectionPoint(p1, p2, from, center);
+        var result = GetIntersectionPoint(p1, p2, from, center);
 
-        if (result.X >= _rect.Left && result.X <= _rect.Right)
+        if (result.X >= Border.Left && result.X <= Border.Right)
         {
             return result;
         }
 
-        if (from.X < _rect.Left)
+        if (from.X < Border.Left)
         {
-            p1 = new PointF(_rect.Left, _rect.Top);
-            p2 = new PointF(_rect.Left, _rect.Bottom);
+            p1 = new PointF(Border.Left, Border.Top);
+            p2 = new PointF(Border.Left, Border.Bottom);
         }
-        else if (from.X > _rect.Right)
+        else if (from.X > Border.Right)
         {
-            p1 = new PointF(_rect.Right, _rect.Top);
-            p2 = new PointF(_rect.Right, _rect.Bottom);
+            p1 = new PointF(Border.Right, Border.Top);
+            p2 = new PointF(Border.Right, Border.Bottom);
         }
 
-        result = IntersectionPoint(p1, p2, from, center);
+        result = GetIntersectionPoint(p1, p2, from, center);
 
         return result;
     }
 
     public bool Intersects(Point p)
     {
-        return _rect.Contains(p);
+        return Border.Contains(p);
     }
 
-    private static PointF IntersectionPoint(PointF from1, PointF to1, PointF from2, PointF to2)
+    private static PointF GetIntersectionPoint(PointF from1, PointF to1, PointF from2, PointF to2)
     {
         var x1 = from1.X;
         var y1 = from1.Y;

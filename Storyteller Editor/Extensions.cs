@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoryTelling.Entities;
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -7,6 +8,20 @@ namespace StoryTelling.Editor;
 
 public static class Extensions
 {
+    public static void DrawNode(this Graphics g, Node node, Font font, bool isRoot)
+    {
+        var size = g.MeasureString(node.Name, font);
+
+        if (isRoot)
+        {
+            g.FillRectangle(Brushes.Green, node.Position.X, node.Position.Y, size.Width, size.Height);
+        }
+
+        g.DrawString(node.Name, font, Brushes.Black, node.Position);
+        g.DrawRectangle(Pens.Black, node.Position.X, node.Position.Y, size.Width, size.Height);
+        node.Border = new RectangleF(node.Position.X, node.Position.Y, size.Width, size.Height);
+    }
+
     public static void DrawArrow(this Graphics graphics, PointF from, PointF to, int arrowWidth = 5, int arrowLength = 15)
     {
         graphics.DrawLine(Pens.Red, from, to);

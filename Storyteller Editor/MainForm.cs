@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
-using StoryTelling.DAL;
+using StoryTelling.DAL.Project;
+using StoryTelling.DAL.Export;
 using StoryTelling.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,6 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-
 
 namespace StoryTelling.Editor;
 
@@ -28,6 +28,8 @@ public partial class MainForm : Form
     private int _fontSize = 16;
     private Point _offsetStart = new();
     private bool _changingOffset = false;
+    private Font _currentFont = new("Arial", 16);
+    private string? _root;
 
     public MainForm()
     {
@@ -41,19 +43,21 @@ public partial class MainForm : Form
         File.Delete(_dbFileName);
         storyGroup.Visible = false;
 
-        using var context = new StoryContext(_dbFileName);
+        using var context = new ProjectContext(_dbFileName);
         context.Database.EnsureCreated();
         context.SaveChanges();
     }
 
     private void DrawNodes()
     {
-        Image img = new Bitmap(graphPicture.Width, graphPicture.Height);
+        var img = new Bitmap(graphPicture.Width, graphPicture.Height);
         using var g = Graphics.FromImage(img);
 
         foreach (var node in _nodes)
         {
-            node.Draw(g);
+            var isRoot = string.IsNullOrWhiteSpace(_root) == false && node.Name == _root;
+
+            g.DrawNode(node, _currentFont, isRoot);
         }
 
         foreach (var transition in _transitions)
@@ -63,17 +67,17 @@ public partial class MainForm : Form
 
             if (from != null && to != null)
             {
-                g.DrawArrow(from.GetBorderPoint(to.Center()), to.GetBorderPoint(from.Center()));
+                g.DrawArrow(from.GetPointOnBorder(to.Center()), to.GetPointOnBorder(from.Center()));
             }
         }
 
         graphPicture.Image = img;
     }
 
-    public void UpdateTransitions()
+    private void UpdateTransitions()
     {
         _transitions.Clear();
-        using var context = new StoryContext(_dbFileName);
+        using var context = new ProjectContext(_dbFileName);
         var transitions = context.Transitions.Include(x => x.From).Include(x => x.To).ToArray();
 
         foreach (var transition in transitions)
@@ -107,15 +111,15 @@ public partial class MainForm : Form
 
         if (_nodesCounter == 1)
         {
-            Node.Root = node.Name;
+            _root = node.Name;
         }
 
         _nodes.Add(node);
         DrawNodes();
 
-        using var context = new StoryContext(_dbFileName);
+        using var context = new ProjectContext(_dbFileName);
 
-        var n = new StoryNode
+        var n = new ProjectNode
         {
             Name = node.Name
         };
@@ -132,7 +136,7 @@ public partial class MainForm : Form
         }
     }
 
-    private Node? GetNode(Point position)
+    private Node? FindNode(Point position)
     {
         foreach (var node in _nodes)
         {
@@ -168,7 +172,7 @@ public partial class MainForm : Form
         idLabel.Text = node.Name;
         transitionsList.Items.Clear();
 
-        using var context = new StoryContext(_dbFileName);
+        using var context = new ProjectContext(_dbFileName);
         var n = context.Nodes.AsNoTracking().Where(x => x.Name == node.Name).First();
 
         textBox.Text = n.Text;
@@ -187,11 +191,13 @@ public partial class MainForm : Form
         storyGroup.Visible = true;
     }
 
+
+
     private void OnGraphPictureMouseDown(object sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Left)
         {
-            _grabbed = GetNode(e.Location);
+            _grabbed = FindNode(e.Location);
 
             if (_selected != _grabbed)
             {
@@ -218,11 +224,11 @@ public partial class MainForm : Form
         {
             if (_transitionFrom == null)
             {
-                _transitionFrom = GetNode(e.Location);
+                _transitionFrom = FindNode(e.Location);
             }
             else
             {
-                var transitionTo = GetNode(e.Location);
+                var transitionTo = FindNode(e.Location);
 
                 if (transitionTo != null)
                 {
@@ -241,12 +247,12 @@ public partial class MainForm : Form
                             return;
                         }
 
-                        using var context = new StoryContext(_dbFileName);
+                        using var context = new ProjectContext(_dbFileName);
 
                         var firstNode = context.Nodes.Where(x => x.Name == _transitionFrom.Name).First();
                         var secondNode = context.Nodes.Where(x => x.Name == transitionTo.Name).First();
 
-                        var transition = new StoryTransition
+                        var transition = new ProjectTransition
                         {
                             From = firstNode,
                             To = secondNode,
@@ -273,13 +279,10 @@ public partial class MainForm : Form
         if (e.Button == MouseButtons.Left)
         {
             _grabbed = null;
-            return;
         }
-
-        if (e.Button == MouseButtons.Middle)
+        else if (e.Button == MouseButtons.Middle)
         {
             _changingOffset = false;
-            return;
         }
     }
 
@@ -312,7 +315,7 @@ public partial class MainForm : Form
             DrawNodes();
 
             using var g = Graphics.FromImage(graphPicture.Image);
-            g.DrawArrow(_transitionFrom.GetBorderPoint(e.Location), e.Location);
+            g.DrawArrow(_transitionFrom.GetPointOnBorder(e.Location), e.Location);
         }
     }
 
@@ -323,7 +326,7 @@ public partial class MainForm : Form
             return;
         }
 
-        using var context = new StoryContext(_dbFileName);
+        using var context = new ProjectContext(_dbFileName);
 
         var node = context.Nodes.Where(x => x.Name == _selected.Name).First();
         node.Text = textBox.Text;
@@ -352,14 +355,14 @@ public partial class MainForm : Form
                 return;
             }
 
-            using var context = new StoryContext(_dbFileName);
+            using var context = new ProjectContext(_dbFileName);
             var node = context.Nodes.Where(x => x.Name == _selected.Name).First();
             node.Name = newName;
             context.SaveChanges();
 
-            if (_selected.Name == Node.Root)
+            if (_selected.Name == _root)
             {
-                Node.Root = newName;
+                _root = newName;
             }
 
             _selected.Name = newName;
@@ -378,7 +381,7 @@ public partial class MainForm : Form
         }
 
         var blob = img?.ToBytes();
-        using var context = new StoryContext(_dbFileName);
+        using var context = new ProjectContext(_dbFileName);
 
         var node = context.Nodes.Where(x => x.Name == _selected.Name).First();
         node.Image = blob;
@@ -435,7 +438,7 @@ public partial class MainForm : Form
             return;
         }
 
-        Node.Root = _selected.Name;
+        _root = _selected.Name;
         DrawNodes();
     }
 
@@ -446,14 +449,14 @@ public partial class MainForm : Form
             return;
         }
 
-        using var context = new StoryContext(_dbFileName);
+        using var context = new ProjectContext(_dbFileName);
         var node = context.Nodes.Where(x => x.Name == _selected.Name).First();
         context.Nodes.Remove(node);
         context.SaveChanges();
 
-        if (_selected.Name == Node.Root)
+        if (_selected.Name == _root)
         {
-            Node.Root = null;
+            _root = null;
         }
 
         _nodes.Remove(_selected);
@@ -473,7 +476,7 @@ public partial class MainForm : Form
             _fontSize = 1;
         }
 
-        Node.CurrentFont = new Font("Arial", _fontSize);
+        _currentFont = new Font("Arial", _fontSize);
 
         DrawNodes();
     }
@@ -504,7 +507,7 @@ public partial class MainForm : Form
                 return;
             }
 
-            using var context = new StoryContext(_dbFileName);
+            using var context = new ProjectContext(_dbFileName);
             var t = context.Transitions.Where(x => x.Name == transition!.Name).First();
             t.Name = newName;
             context.SaveChanges();
@@ -526,7 +529,7 @@ public partial class MainForm : Form
 
         var transition = transitionsList.Items[index] as Transition ?? throw new Exception("Convert to Transition failed");
 
-        using var context = new StoryContext(_dbFileName);
+        using var context = new ProjectContext(_dbFileName);
         var t = context.Transitions.Where(x => x.Name == transition.Name).First();
         context.Remove(t);
         context.SaveChanges();
@@ -544,11 +547,11 @@ public partial class MainForm : Form
 
         if (saveProjectFileDialog.ShowDialog() == DialogResult.OK)
         {
-            using var context = new StoryContext(_dbFileName);
-            var settings = context.ProjectSettings.ToArray();
+            using var context = new ProjectContext(_dbFileName);
+            var settings = context.Settings.ToArray();
             context.RemoveRange(settings);
 
-            var rootNode = context.Nodes.Where(x => x.Name == Node.Root).FirstOrDefault();
+            var rootNode = context.Nodes.Where(x => x.Name == _root).FirstOrDefault();
 
             context.Add(new ProjectSettings
             {
@@ -582,13 +585,13 @@ public partial class MainForm : Form
         {
             File.Copy(openProjectFileDialog.FileName, _dbFileName, true);
 
-            using var context = new StoryContext(_dbFileName);
-            var settings = context.ProjectSettings.Include(x => x.RootNode).First();
+            using var context = new ProjectContext(_dbFileName);
+            var settings = context.Settings.Include(x => x.RootNode).First();
 
-            Node.Root = settings.RootNode?.Name;
+            _root = settings.RootNode?.Name;
             _fontSize = settings.FontSize;
             _nodesCounter = settings.NodesCounter;
-            Node.CurrentFont = new Font("Arial", _fontSize);
+            _currentFont = new Font("Arial", _fontSize);
 
             _nodes.Clear();
 
@@ -609,19 +612,82 @@ public partial class MainForm : Form
 
     private void OnExportToolStripMenuItemClick(object sender, EventArgs e)
     {
-        if (Node.Root == null)
+        if (_root == null)
         {
             MessageBox.Show(MyStrings.NoRoot);
             return;
         }
 
         exportFileDialog.Title = MyStrings.Export;
-        exportFileDialog.DefaultExt = "story";
         exportFileDialog.Filter = MyStrings.ExportFile;
 
         if (exportFileDialog.ShowDialog() == DialogResult.OK)
         {
-            File.Copy(_dbFileName, exportFileDialog.FileName, true);
+            using var projectContext = new ProjectContext(_dbFileName);
+
+            var settings = projectContext.Settings.
+                AsNoTracking().
+                Include(x => x.RootNode).
+                First();
+
+            var nodes = projectContext.Nodes.
+                AsNoTracking().
+                ToArray();
+
+            var transitions = projectContext.Transitions.
+                AsNoTracking().
+                Include(x => x.From).
+                Include(x => x.To).
+            ToArray();
+
+            File.Delete(exportFileDialog.FileName);
+            using var exportContext = new ExportContext(exportFileDialog.FileName);
+            exportContext.Database.EnsureCreated();
+
+            exportContext.Metadata.Add(new ExportMetadata
+            {
+                RootNodeId = settings.RootNode!.Id
+            });
+
+            var exportNodes = new List<ExportNode>();
+            var exportTransitions = new List<ExportTransition>();
+
+            foreach (var transition in transitions)
+            {
+                if (exportNodes.Any(x => x.Id == transition.From.Id) == false)
+                {
+                    exportNodes.Add(new ExportNode
+                    {
+                        Id = transition.From.Id,
+                        Name = transition.From.Name,
+                        Text = transition.From.Text,
+                        Image = transition.From.Image
+                    });
+                }
+
+                if (exportNodes.Any(x => x.Id == transition.To.Id) == false)
+                {
+                    exportNodes.Add(new ExportNode
+                    {
+                        Id = transition.To.Id,
+                        Name = transition.To.Name,
+                        Text = transition.To.Text,
+                        Image = transition.To.Image
+                    });
+                }
+
+                exportContext.Transitions.Add(new ExportTransition 
+                { 
+                    Id = transition.Id,
+                    Name = transition.Name,
+                    From = exportNodes.First(x => x.Id == transition.From.Id),
+                    To = exportNodes.First(x => x.Id == transition.To.Id)
+                }
+                );
+            }
+
+            exportContext.SaveChanges();
+
             MessageBox.Show(MyStrings.Exported);
         }
     }

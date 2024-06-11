@@ -1,20 +1,15 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
-namespace StoryTelling.DAL;
+namespace StoryTelling.DAL.Export;
 
-public class StoryContext : DbContext
+public class ExportContext(string dbFileName) : DbContext
 {
-    private readonly string _dbFileName;
+    private readonly string _dbFileName = dbFileName;
 
-    public DbSet<ProjectSettings> ProjectSettings { get; set; }
-    public DbSet<StoryNode> Nodes { get; set; }
-    public DbSet<StoryTransition> Transitions { get; set; }
-
-    public StoryContext(string dbFileName)
-    {
-        _dbFileName = dbFileName;
-    }
+    public DbSet<ExportMetadata> Metadata { get; set; }
+    public DbSet<ExportNode> Nodes { get; set; }
+    public DbSet<ExportTransition> Transitions { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
@@ -31,6 +26,4 @@ public class StoryContext : DbContext
 
         options.UseSqlite(connection);
     }
-
-
 }
