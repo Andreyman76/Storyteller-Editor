@@ -79,7 +79,12 @@ public partial class MainForm : Form
     {
         _transitions.Clear();
         using var context = new ProjectContext(_dbFileName);
-        var transitions = context.Transitions.Include(x => x.From).Include(x => x.To).ToArray();
+
+        var transitions = context.Transitions.
+            AsNoTracking().
+            Include(x => x.From).
+            Include(x => x.To).
+            ToArray();
 
         foreach (var transition in transitions)
         {
@@ -231,7 +236,7 @@ public partial class MainForm : Form
 
                 if (transitionTo != null)
                 {
-                    var name = Interaction.InputBox(MyStrings.SetTransitionName.Replace("@from", _transitionFrom.Name).Replace("@to", transitionTo.Name));
+                    var name = Interaction.InputBox(MyStrings.SetTransitionName.Replace("@from", _transitionFrom.Name).Replace("@to", transitionTo.Name), "Storyteller Editor");
 
                     if (!ValidateStringLength(name, 50))
                     {
@@ -339,7 +344,7 @@ public partial class MainForm : Form
             return;
         }
 
-        var newName = Interaction.InputBox(MyStrings.EnterNewStoryId.Replace("@id", _selected.Name));
+        var newName = Interaction.InputBox(MyStrings.EnterNewStoryId.Replace("@id", _selected.Name), "Storyteller Editor");
 
         if (!ValidateStringLength(newName, 50))
         {
@@ -491,7 +496,7 @@ public partial class MainForm : Form
         }
 
         var transition = transitionsList.Items[index] as Transition ?? throw new Exception("Convert to Transition failed");
-        var newName = Interaction.InputBox(MyStrings.NewTransitionName.Replace("@transition", transition?.ToString()));
+        var newName = Interaction.InputBox(MyStrings.NewTransitionName.Replace("@transition", transition?.ToString()), "Storyteller Editor");
 
         if (!ValidateStringLength(newName, 50))
         {
@@ -541,7 +546,6 @@ public partial class MainForm : Form
     private void OnSaveProjectToolStripMenuItemClick(object sender, EventArgs e)
     {
         saveProjectFileDialog.Title = MyStrings.SaveProject;
-        saveProjectFileDialog.DefaultExt = "stp";
         saveProjectFileDialog.Filter = MyStrings.ProjectFile;
 
         if (saveProjectFileDialog.ShowDialog() == DialogResult.OK)
