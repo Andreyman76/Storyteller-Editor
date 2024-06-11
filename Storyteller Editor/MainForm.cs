@@ -36,6 +36,7 @@ public partial class MainForm : Form
         Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
         Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
         InitializeComponent();
+        WindowState = FormWindowState.Maximized;
     }
 
     private void OnFormLoad(object sender, EventArgs e)
@@ -169,7 +170,7 @@ public partial class MainForm : Form
             return;
         }
 
-        idLabel.Text = node.Name;
+        idLabel.Text = "Id: " + node.Name;
         transitionsList.Items.Clear();
 
         using var context = new ProjectContext(_dbFileName);
@@ -190,8 +191,6 @@ public partial class MainForm : Form
 
         storyGroup.Visible = true;
     }
-
-
 
     private void OnGraphPictureMouseDown(object sender, MouseEventArgs e)
     {
@@ -366,7 +365,7 @@ public partial class MainForm : Form
             }
 
             _selected.Name = newName;
-            idLabel.Text = newName;
+            idLabel.Text = "Id: " + newName;
 
             UpdateTransitions();
             DrawNodes();

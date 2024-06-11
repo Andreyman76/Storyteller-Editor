@@ -30,277 +30,282 @@ partial class MainForm
     private void InitializeComponent()
     {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-        this.graphPicture = new System.Windows.Forms.PictureBox();
-        this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-        this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.storyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.createNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.removeSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.graphGroup = new System.Windows.Forms.GroupBox();
-        this.storyGroup = new System.Windows.Forms.GroupBox();
-        this.changeIdButton = new System.Windows.Forms.Button();
-        this.idLabel = new System.Windows.Forms.Label();
-        this.pasteFromClipboardButton = new System.Windows.Forms.Button();
-        this.markAsRootButton = new System.Windows.Forms.Button();
-        this.removeTransitionButton = new System.Windows.Forms.Button();
-        this.changeTransitionNameButton = new System.Windows.Forms.Button();
-        this.removeImageButton = new System.Windows.Forms.Button();
-        this.label3 = new System.Windows.Forms.Label();
-        this.transitionsList = new System.Windows.Forms.ListBox();
-        this.previewPicture = new System.Windows.Forms.PictureBox();
-        this.selectImageButton = new System.Windows.Forms.Button();
-        this.textBox = new System.Windows.Forms.RichTextBox();
-        this.label2 = new System.Windows.Forms.Label();
-        this.label1 = new System.Windows.Forms.Label();
-        this.selectImageFileDialog = new System.Windows.Forms.OpenFileDialog();
-        this.saveProjectFileDialog = new System.Windows.Forms.SaveFileDialog();
-        this.openProjectFileDialog = new System.Windows.Forms.OpenFileDialog();
-        this.exportFileDialog = new System.Windows.Forms.SaveFileDialog();
-        ((System.ComponentModel.ISupportInitialize)(this.graphPicture)).BeginInit();
-        this.menuStrip1.SuspendLayout();
-        this.graphGroup.SuspendLayout();
-        this.storyGroup.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
-        this.SuspendLayout();
+        graphPicture = new System.Windows.Forms.PictureBox();
+        menuStrip1 = new System.Windows.Forms.MenuStrip();
+        fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        storyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        createNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        removeSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        russianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        graphGroup = new System.Windows.Forms.GroupBox();
+        storyGroup = new System.Windows.Forms.GroupBox();
+        tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+        removeTransitionButton = new System.Windows.Forms.Button();
+        markAsRootButton = new System.Windows.Forms.Button();
+        changeTransitionNameButton = new System.Windows.Forms.Button();
+        pasteFromClipboardButton = new System.Windows.Forms.Button();
+        transitionsList = new System.Windows.Forms.ListBox();
+        label3 = new System.Windows.Forms.Label();
+        changeIdButton = new System.Windows.Forms.Button();
+        idLabel = new System.Windows.Forms.Label();
+        removeImageButton = new System.Windows.Forms.Button();
+        previewPicture = new System.Windows.Forms.PictureBox();
+        label2 = new System.Windows.Forms.Label();
+        textBox = new System.Windows.Forms.RichTextBox();
+        selectImageButton = new System.Windows.Forms.Button();
+        selectImageFileDialog = new System.Windows.Forms.OpenFileDialog();
+        saveProjectFileDialog = new System.Windows.Forms.SaveFileDialog();
+        openProjectFileDialog = new System.Windows.Forms.OpenFileDialog();
+        exportFileDialog = new System.Windows.Forms.SaveFileDialog();
+        tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+        ((System.ComponentModel.ISupportInitialize)graphPicture).BeginInit();
+        menuStrip1.SuspendLayout();
+        graphGroup.SuspendLayout();
+        storyGroup.SuspendLayout();
+        tableLayoutPanel2.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)previewPicture).BeginInit();
+        tableLayoutPanel1.SuspendLayout();
+        SuspendLayout();
         // 
         // graphPicture
         // 
-        this.graphPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-        resources.ApplyResources(this.graphPicture, "graphPicture");
-        this.graphPicture.Name = "graphPicture";
-        this.graphPicture.TabStop = false;
-        this.graphPicture.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnGraphPictureMouseDown);
-        this.graphPicture.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OnGraphPictureMouseMove);
-        this.graphPicture.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnGraphPictureMouseUp);
-        this.graphPicture.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.OnGraphPictureMouseWheel);
+        graphPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        resources.ApplyResources(graphPicture, "graphPicture");
+        graphPicture.Name = "graphPicture";
+        graphPicture.TabStop = false;
+        graphPicture.MouseDown += OnGraphPictureMouseDown;
+        graphPicture.MouseMove += OnGraphPictureMouseMove;
+        graphPicture.MouseUp += OnGraphPictureMouseUp;
+        graphPicture.MouseWheel += OnGraphPictureMouseWheel;
         // 
         // menuStrip1
         // 
-        this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-        this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        this.fileToolStripMenuItem,
-        this.storyToolStripMenuItem,
-        this.languageToolStripMenuItem});
-        resources.ApplyResources(this.menuStrip1, "menuStrip1");
-        this.menuStrip1.Name = "menuStrip1";
+        menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+        menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, storyToolStripMenuItem, languageToolStripMenuItem });
+        resources.ApplyResources(menuStrip1, "menuStrip1");
+        menuStrip1.Name = "menuStrip1";
         // 
         // fileToolStripMenuItem
         // 
-        this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        this.saveProjectToolStripMenuItem,
-        this.openProjectToolStripMenuItem,
-        this.exportToolStripMenuItem});
-        this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-        resources.ApplyResources(this.fileToolStripMenuItem, "fileToolStripMenuItem");
+        fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { saveProjectToolStripMenuItem, openProjectToolStripMenuItem, exportToolStripMenuItem });
+        fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+        resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
         // 
         // saveProjectToolStripMenuItem
         // 
-        this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
-        resources.ApplyResources(this.saveProjectToolStripMenuItem, "saveProjectToolStripMenuItem");
-        this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.OnSaveProjectToolStripMenuItemClick);
+        saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
+        resources.ApplyResources(saveProjectToolStripMenuItem, "saveProjectToolStripMenuItem");
+        saveProjectToolStripMenuItem.Click += OnSaveProjectToolStripMenuItemClick;
         // 
         // openProjectToolStripMenuItem
         // 
-        this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
-        resources.ApplyResources(this.openProjectToolStripMenuItem, "openProjectToolStripMenuItem");
-        this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.OnOpenProjectToolStripMenuItemClick);
+        openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
+        resources.ApplyResources(openProjectToolStripMenuItem, "openProjectToolStripMenuItem");
+        openProjectToolStripMenuItem.Click += OnOpenProjectToolStripMenuItemClick;
         // 
         // exportToolStripMenuItem
         // 
-        this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-        resources.ApplyResources(this.exportToolStripMenuItem, "exportToolStripMenuItem");
-        this.exportToolStripMenuItem.Click += new System.EventHandler(this.OnExportToolStripMenuItemClick);
+        exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+        resources.ApplyResources(exportToolStripMenuItem, "exportToolStripMenuItem");
+        exportToolStripMenuItem.Click += OnExportToolStripMenuItemClick;
         // 
         // storyToolStripMenuItem
         // 
-        this.storyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        this.createNewToolStripMenuItem,
-        this.removeSelectedToolStripMenuItem});
-        this.storyToolStripMenuItem.Name = "storyToolStripMenuItem";
-        resources.ApplyResources(this.storyToolStripMenuItem, "storyToolStripMenuItem");
+        storyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { createNewToolStripMenuItem, removeSelectedToolStripMenuItem });
+        storyToolStripMenuItem.Name = "storyToolStripMenuItem";
+        resources.ApplyResources(storyToolStripMenuItem, "storyToolStripMenuItem");
         // 
         // createNewToolStripMenuItem
         // 
-        this.createNewToolStripMenuItem.Name = "createNewToolStripMenuItem";
-        resources.ApplyResources(this.createNewToolStripMenuItem, "createNewToolStripMenuItem");
-        this.createNewToolStripMenuItem.Click += new System.EventHandler(this.OnCreateNewToolStripMenuItemClick);
+        createNewToolStripMenuItem.Name = "createNewToolStripMenuItem";
+        resources.ApplyResources(createNewToolStripMenuItem, "createNewToolStripMenuItem");
+        createNewToolStripMenuItem.Click += OnCreateNewToolStripMenuItemClick;
         // 
         // removeSelectedToolStripMenuItem
         // 
-        this.removeSelectedToolStripMenuItem.Name = "removeSelectedToolStripMenuItem";
-        resources.ApplyResources(this.removeSelectedToolStripMenuItem, "removeSelectedToolStripMenuItem");
-        this.removeSelectedToolStripMenuItem.Click += new System.EventHandler(this.OnRemoveSelectedToolStripMenuItemClick);
+        removeSelectedToolStripMenuItem.Name = "removeSelectedToolStripMenuItem";
+        resources.ApplyResources(removeSelectedToolStripMenuItem, "removeSelectedToolStripMenuItem");
+        removeSelectedToolStripMenuItem.Click += OnRemoveSelectedToolStripMenuItemClick;
         // 
         // languageToolStripMenuItem
         // 
-        this.languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-        this.englishToolStripMenuItem,
-        this.russianToolStripMenuItem});
-        this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-        resources.ApplyResources(this.languageToolStripMenuItem, "languageToolStripMenuItem");
+        languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { englishToolStripMenuItem, russianToolStripMenuItem });
+        languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+        resources.ApplyResources(languageToolStripMenuItem, "languageToolStripMenuItem");
         // 
         // englishToolStripMenuItem
         // 
-        this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-        resources.ApplyResources(this.englishToolStripMenuItem, "englishToolStripMenuItem");
-        this.englishToolStripMenuItem.Click += new System.EventHandler(this.OnEnglishToolStripMenuItemClick);
+        englishToolStripMenuItem.Name = "englishToolStripMenuItem";
+        resources.ApplyResources(englishToolStripMenuItem, "englishToolStripMenuItem");
+        englishToolStripMenuItem.Click += OnEnglishToolStripMenuItemClick;
         // 
         // russianToolStripMenuItem
         // 
-        this.russianToolStripMenuItem.Name = "russianToolStripMenuItem";
-        resources.ApplyResources(this.russianToolStripMenuItem, "russianToolStripMenuItem");
-        this.russianToolStripMenuItem.Click += new System.EventHandler(this.OnRussianToolStripMenuItemClick);
+        russianToolStripMenuItem.Name = "russianToolStripMenuItem";
+        resources.ApplyResources(russianToolStripMenuItem, "russianToolStripMenuItem");
+        russianToolStripMenuItem.Click += OnRussianToolStripMenuItemClick;
         // 
         // graphGroup
         // 
-        this.graphGroup.Controls.Add(this.graphPicture);
-        resources.ApplyResources(this.graphGroup, "graphGroup");
-        this.graphGroup.Name = "graphGroup";
-        this.graphGroup.TabStop = false;
+        graphGroup.Controls.Add(graphPicture);
+        resources.ApplyResources(graphGroup, "graphGroup");
+        graphGroup.Name = "graphGroup";
+        graphGroup.TabStop = false;
         // 
         // storyGroup
         // 
-        this.storyGroup.Controls.Add(this.changeIdButton);
-        this.storyGroup.Controls.Add(this.idLabel);
-        this.storyGroup.Controls.Add(this.pasteFromClipboardButton);
-        this.storyGroup.Controls.Add(this.markAsRootButton);
-        this.storyGroup.Controls.Add(this.removeTransitionButton);
-        this.storyGroup.Controls.Add(this.changeTransitionNameButton);
-        this.storyGroup.Controls.Add(this.removeImageButton);
-        this.storyGroup.Controls.Add(this.label3);
-        this.storyGroup.Controls.Add(this.transitionsList);
-        this.storyGroup.Controls.Add(this.previewPicture);
-        this.storyGroup.Controls.Add(this.selectImageButton);
-        this.storyGroup.Controls.Add(this.textBox);
-        this.storyGroup.Controls.Add(this.label2);
-        this.storyGroup.Controls.Add(this.label1);
-        resources.ApplyResources(this.storyGroup, "storyGroup");
-        this.storyGroup.Name = "storyGroup";
-        this.storyGroup.TabStop = false;
+        storyGroup.Controls.Add(tableLayoutPanel2);
+        resources.ApplyResources(storyGroup, "storyGroup");
+        storyGroup.Name = "storyGroup";
+        storyGroup.TabStop = false;
         // 
-        // changeIdButton
+        // tableLayoutPanel2
         // 
-        resources.ApplyResources(this.changeIdButton, "changeIdButton");
-        this.changeIdButton.Name = "changeIdButton";
-        this.changeIdButton.UseVisualStyleBackColor = true;
-        this.changeIdButton.Click += new System.EventHandler(this.OnChangeIdButtonClick);
-        // 
-        // idLabel
-        // 
-        resources.ApplyResources(this.idLabel, "idLabel");
-        this.idLabel.Name = "idLabel";
-        // 
-        // pasteFromClipboardButton
-        // 
-        resources.ApplyResources(this.pasteFromClipboardButton, "pasteFromClipboardButton");
-        this.pasteFromClipboardButton.Name = "pasteFromClipboardButton";
-        this.pasteFromClipboardButton.UseVisualStyleBackColor = true;
-        this.pasteFromClipboardButton.Click += new System.EventHandler(this.OnPasteFromClipboardButtonClick);
-        // 
-        // markAsRootButton
-        // 
-        resources.ApplyResources(this.markAsRootButton, "markAsRootButton");
-        this.markAsRootButton.Name = "markAsRootButton";
-        this.markAsRootButton.UseVisualStyleBackColor = true;
-        this.markAsRootButton.Click += new System.EventHandler(this.OnMarkAsRootButtonClick);
+        resources.ApplyResources(tableLayoutPanel2, "tableLayoutPanel2");
+        tableLayoutPanel2.Controls.Add(removeTransitionButton, 4, 9);
+        tableLayoutPanel2.Controls.Add(markAsRootButton, 4, 4);
+        tableLayoutPanel2.Controls.Add(changeTransitionNameButton, 4, 8);
+        tableLayoutPanel2.Controls.Add(pasteFromClipboardButton, 0, 5);
+        tableLayoutPanel2.Controls.Add(transitionsList, 0, 8);
+        tableLayoutPanel2.Controls.Add(label3, 0, 7);
+        tableLayoutPanel2.Controls.Add(changeIdButton, 0, 1);
+        tableLayoutPanel2.Controls.Add(idLabel, 0, 0);
+        tableLayoutPanel2.Controls.Add(removeImageButton, 0, 6);
+        tableLayoutPanel2.Controls.Add(previewPicture, 2, 4);
+        tableLayoutPanel2.Controls.Add(label2, 0, 2);
+        tableLayoutPanel2.Controls.Add(textBox, 0, 3);
+        tableLayoutPanel2.Controls.Add(selectImageButton, 0, 4);
+        tableLayoutPanel2.Name = "tableLayoutPanel2";
         // 
         // removeTransitionButton
         // 
-        resources.ApplyResources(this.removeTransitionButton, "removeTransitionButton");
-        this.removeTransitionButton.Name = "removeTransitionButton";
-        this.removeTransitionButton.UseVisualStyleBackColor = true;
-        this.removeTransitionButton.Click += new System.EventHandler(this.OnRemoveTransitionButtonClick);
+        resources.ApplyResources(removeTransitionButton, "removeTransitionButton");
+        removeTransitionButton.Name = "removeTransitionButton";
+        removeTransitionButton.UseVisualStyleBackColor = true;
+        removeTransitionButton.Click += OnRemoveTransitionButtonClick;
+        // 
+        // markAsRootButton
+        // 
+        resources.ApplyResources(markAsRootButton, "markAsRootButton");
+        markAsRootButton.Name = "markAsRootButton";
+        markAsRootButton.UseVisualStyleBackColor = true;
+        markAsRootButton.Click += OnMarkAsRootButtonClick;
         // 
         // changeTransitionNameButton
         // 
-        resources.ApplyResources(this.changeTransitionNameButton, "changeTransitionNameButton");
-        this.changeTransitionNameButton.Name = "changeTransitionNameButton";
-        this.changeTransitionNameButton.UseVisualStyleBackColor = true;
-        this.changeTransitionNameButton.Click += new System.EventHandler(this.OnChangeTransitionNameButtonClick);
+        resources.ApplyResources(changeTransitionNameButton, "changeTransitionNameButton");
+        changeTransitionNameButton.Name = "changeTransitionNameButton";
+        changeTransitionNameButton.UseVisualStyleBackColor = true;
+        changeTransitionNameButton.Click += OnChangeTransitionNameButtonClick;
         // 
-        // removeImageButton
+        // pasteFromClipboardButton
         // 
-        resources.ApplyResources(this.removeImageButton, "removeImageButton");
-        this.removeImageButton.Name = "removeImageButton";
-        this.removeImageButton.UseVisualStyleBackColor = true;
-        this.removeImageButton.Click += new System.EventHandler(this.OnRemoveImageButtonClick);
-        // 
-        // label3
-        // 
-        resources.ApplyResources(this.label3, "label3");
-        this.label3.Name = "label3";
+        resources.ApplyResources(pasteFromClipboardButton, "pasteFromClipboardButton");
+        pasteFromClipboardButton.Name = "pasteFromClipboardButton";
+        pasteFromClipboardButton.UseVisualStyleBackColor = true;
+        pasteFromClipboardButton.Click += OnPasteFromClipboardButtonClick;
         // 
         // transitionsList
         // 
-        this.transitionsList.FormattingEnabled = true;
-        resources.ApplyResources(this.transitionsList, "transitionsList");
-        this.transitionsList.Name = "transitionsList";
+        tableLayoutPanel2.SetColumnSpan(transitionsList, 3);
+        resources.ApplyResources(transitionsList, "transitionsList");
+        transitionsList.FormattingEnabled = true;
+        transitionsList.Name = "transitionsList";
+        tableLayoutPanel2.SetRowSpan(transitionsList, 2);
+        // 
+        // label3
+        // 
+        resources.ApplyResources(label3, "label3");
+        label3.Name = "label3";
+        // 
+        // changeIdButton
+        // 
+        resources.ApplyResources(changeIdButton, "changeIdButton");
+        changeIdButton.Name = "changeIdButton";
+        changeIdButton.UseVisualStyleBackColor = true;
+        changeIdButton.Click += OnChangeIdButtonClick;
+        // 
+        // idLabel
+        // 
+        resources.ApplyResources(idLabel, "idLabel");
+        tableLayoutPanel2.SetColumnSpan(idLabel, 5);
+        idLabel.Name = "idLabel";
+        // 
+        // removeImageButton
+        // 
+        resources.ApplyResources(removeImageButton, "removeImageButton");
+        removeImageButton.Name = "removeImageButton";
+        removeImageButton.UseVisualStyleBackColor = true;
+        removeImageButton.Click += OnRemoveImageButtonClick;
         // 
         // previewPicture
         // 
-        this.previewPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-        resources.ApplyResources(this.previewPicture, "previewPicture");
-        this.previewPicture.Name = "previewPicture";
-        this.previewPicture.TabStop = false;
-        // 
-        // selectImageButton
-        // 
-        resources.ApplyResources(this.selectImageButton, "selectImageButton");
-        this.selectImageButton.Name = "selectImageButton";
-        this.selectImageButton.UseVisualStyleBackColor = true;
-        this.selectImageButton.Click += new System.EventHandler(this.OnSelectImageButtonClick);
-        // 
-        // textBox
-        // 
-        resources.ApplyResources(this.textBox, "textBox");
-        this.textBox.Name = "textBox";
-        this.textBox.TextChanged += new System.EventHandler(this.OnTextBoxTextChanged);
+        previewPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        resources.ApplyResources(previewPicture, "previewPicture");
+        previewPicture.Name = "previewPicture";
+        tableLayoutPanel2.SetRowSpan(previewPicture, 3);
+        previewPicture.TabStop = false;
         // 
         // label2
         // 
-        resources.ApplyResources(this.label2, "label2");
-        this.label2.Name = "label2";
+        resources.ApplyResources(label2, "label2");
+        label2.Name = "label2";
         // 
-        // label1
+        // textBox
         // 
-        resources.ApplyResources(this.label1, "label1");
-        this.label1.Name = "label1";
+        tableLayoutPanel2.SetColumnSpan(textBox, 5);
+        resources.ApplyResources(textBox, "textBox");
+        textBox.Name = "textBox";
+        textBox.TextChanged += OnTextBoxTextChanged;
+        // 
+        // selectImageButton
+        // 
+        resources.ApplyResources(selectImageButton, "selectImageButton");
+        selectImageButton.Name = "selectImageButton";
+        selectImageButton.UseVisualStyleBackColor = true;
+        selectImageButton.Click += OnSelectImageButtonClick;
         // 
         // selectImageFileDialog
         // 
-        this.selectImageFileDialog.FileName = "openFileDialog1";
+        selectImageFileDialog.FileName = "openFileDialog1";
         // 
         // openProjectFileDialog
         // 
-        this.openProjectFileDialog.FileName = "openFileDialog2";
+        openProjectFileDialog.FileName = "openFileDialog2";
         // 
-        // Form1
+        // tableLayoutPanel1
         // 
-        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+        resources.ApplyResources(tableLayoutPanel1, "tableLayoutPanel1");
+        tableLayoutPanel1.Controls.Add(graphGroup, 0, 0);
+        tableLayoutPanel1.Controls.Add(storyGroup, 1, 0);
+        tableLayoutPanel1.Name = "tableLayoutPanel1";
+        // 
+        // MainForm
+        // 
+        AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
         resources.ApplyResources(this, "$this");
-        this.Controls.Add(this.storyGroup);
-        this.Controls.Add(this.graphGroup);
-        this.Controls.Add(this.menuStrip1);
-        this.MainMenuStrip = this.menuStrip1;
-        this.Name = "Form1";
-        this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnFormClosing);
-        this.Load += new System.EventHandler(this.OnFormLoad);
-        ((System.ComponentModel.ISupportInitialize)(this.graphPicture)).EndInit();
-        this.menuStrip1.ResumeLayout(false);
-        this.menuStrip1.PerformLayout();
-        this.graphGroup.ResumeLayout(false);
-        this.storyGroup.ResumeLayout(false);
-        this.storyGroup.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
-        this.ResumeLayout(false);
-        this.PerformLayout();
-
+        Controls.Add(tableLayoutPanel1);
+        Controls.Add(menuStrip1);
+        MainMenuStrip = menuStrip1;
+        Name = "MainForm";
+        FormClosing += OnFormClosing;
+        Load += OnFormLoad;
+        ((System.ComponentModel.ISupportInitialize)graphPicture).EndInit();
+        menuStrip1.ResumeLayout(false);
+        menuStrip1.PerformLayout();
+        graphGroup.ResumeLayout(false);
+        storyGroup.ResumeLayout(false);
+        tableLayoutPanel2.ResumeLayout(false);
+        tableLayoutPanel2.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)previewPicture).EndInit();
+        tableLayoutPanel1.ResumeLayout(false);
+        ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
@@ -311,7 +316,7 @@ partial class MainForm
     private System.Windows.Forms.GroupBox storyGroup;
     private System.Windows.Forms.RichTextBox textBox;
     private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.Label label1;
+    private System.Windows.Forms.Label idLabel;
     private System.Windows.Forms.ListBox transitionsList;
     private System.Windows.Forms.PictureBox previewPicture;
     private System.Windows.Forms.Button selectImageButton;
@@ -333,9 +338,10 @@ partial class MainForm
     private System.Windows.Forms.ToolStripMenuItem createNewToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem removeSelectedToolStripMenuItem;
     private System.Windows.Forms.Button changeIdButton;
-    private System.Windows.Forms.Label idLabel;
     private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem russianToolStripMenuItem;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 }
 

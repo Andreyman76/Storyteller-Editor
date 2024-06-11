@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
+  <!--
     Microsoft ResX Schema 
-    
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -117,12 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="graphPicture.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="graphPicture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 21</value>
+    <value>3, 23</value>
   </data>
   <data name="graphPicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 500</value>
+    <value>434, 410</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="graphPicture.TabIndex" type="System.Int32, mscorlib">
@@ -132,7 +136,7 @@
     <value>graphPicture</value>
   </data>
   <data name="&gt;&gt;graphPicture.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;graphPicture.Parent" xml:space="preserve">
     <value>graphGroup</value>
@@ -143,36 +147,6 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>999, 28</value>
-  </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 24</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
   <data name="saveProjectToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 26</value>
   </data>
@@ -191,11 +165,11 @@
   <data name="exportToolStripMenuItem.Text" xml:space="preserve">
     <value>Export</value>
   </data>
-  <data name="storyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 24</value>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 24</value>
   </data>
-  <data name="storyToolStripMenuItem.Text" xml:space="preserve">
-    <value>Story</value>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>File</value>
   </data>
   <data name="createNewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 26</value>
@@ -209,11 +183,11 @@
   <data name="removeSelectedToolStripMenuItem.Text" xml:space="preserve">
     <value>Remove selected</value>
   </data>
-  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 24</value>
+  <data name="storyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 24</value>
   </data>
-  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Language</value>
+  <data name="storyToolStripMenuItem.Text" xml:space="preserve">
+    <value>Story</value>
   </data>
   <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 26</value>
@@ -227,11 +201,44 @@
   <data name="russianToolStripMenuItem.Text" xml:space="preserve">
     <value>Russian</value>
   </data>
+  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 24</value>
+  </data>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>893, 28</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="graphGroup.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="graphGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 31</value>
+    <value>3, 3</value>
   </data>
   <data name="graphGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>515, 530</value>
+    <value>440, 436</value>
   </data>
   <data name="graphGroup.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -243,118 +250,25 @@
     <value>graphGroup</value>
   </data>
   <data name="&gt;&gt;graphGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;graphGroup.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;graphGroup.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="changeIdButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 42</value>
-  </data>
-  <data name="changeIdButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 30</value>
-  </data>
-  <data name="changeIdButton.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="changeIdButton.Text" xml:space="preserve">
-    <value>Change id</value>
-  </data>
-  <data name="&gt;&gt;changeIdButton.Name" xml:space="preserve">
-    <value>changeIdButton</value>
-  </data>
-  <data name="&gt;&gt;changeIdButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;changeIdButton.Parent" xml:space="preserve">
-    <value>storyGroup</value>
-  </data>
-  <data name="&gt;&gt;changeIdButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="idLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="idLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 22</value>
-  </data>
-  <data name="idLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 17</value>
-  </data>
-  <data name="idLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="idLabel.Text" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;idLabel.Name" xml:space="preserve">
-    <value>idLabel</value>
-  </data>
-  <data name="&gt;&gt;idLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;idLabel.Parent" xml:space="preserve">
-    <value>storyGroup</value>
-  </data>
-  <data name="&gt;&gt;idLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pasteFromClipboardButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 235</value>
-  </data>
-  <data name="pasteFromClipboardButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 37</value>
-  </data>
-  <data name="pasteFromClipboardButton.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="pasteFromClipboardButton.Text" xml:space="preserve">
-    <value>Paste from clipboard</value>
-  </data>
-  <data name="&gt;&gt;pasteFromClipboardButton.Name" xml:space="preserve">
-    <value>pasteFromClipboardButton</value>
-  </data>
-  <data name="&gt;&gt;pasteFromClipboardButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pasteFromClipboardButton.Parent" xml:space="preserve">
-    <value>storyGroup</value>
-  </data>
-  <data name="&gt;&gt;pasteFromClipboardButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="markAsRootButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>345, 193</value>
-  </data>
-  <data name="markAsRootButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 100</value>
-  </data>
-  <data name="markAsRootButton.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="markAsRootButton.Text" xml:space="preserve">
-    <value>Mark as root</value>
-  </data>
-  <data name="&gt;&gt;markAsRootButton.Name" xml:space="preserve">
-    <value>markAsRootButton</value>
-  </data>
-  <data name="&gt;&gt;markAsRootButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;markAsRootButton.Parent" xml:space="preserve">
-    <value>storyGroup</value>
-  </data>
-  <data name="&gt;&gt;markAsRootButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="removeTransitionButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="removeTransitionButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 405</value>
+    <value>305, 377</value>
   </data>
   <data name="removeTransitionButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 57</value>
+    <value>127, 30</value>
   </data>
   <data name="removeTransitionButton.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -366,19 +280,49 @@
     <value>removeTransitionButton</value>
   </data>
   <data name="&gt;&gt;removeTransitionButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;removeTransitionButton.Parent" xml:space="preserve">
-    <value>storyGroup</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;removeTransitionButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>0</value>
+  </data>
+  <data name="markAsRootButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="markAsRootButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 207</value>
+  </data>
+  <data name="markAsRootButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 28</value>
+  </data>
+  <data name="markAsRootButton.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="markAsRootButton.Text" xml:space="preserve">
+    <value>Mark as root</value>
+  </data>
+  <data name="&gt;&gt;markAsRootButton.Name" xml:space="preserve">
+    <value>markAsRootButton</value>
+  </data>
+  <data name="&gt;&gt;markAsRootButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;markAsRootButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;markAsRootButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="changeTransitionNameButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="changeTransitionNameButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 340</value>
+    <value>305, 343</value>
   </data>
   <data name="changeTransitionNameButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 59</value>
+    <value>127, 28</value>
   </data>
   <data name="changeTransitionNameButton.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -390,19 +334,166 @@
     <value>changeTransitionNameButton</value>
   </data>
   <data name="&gt;&gt;changeTransitionNameButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;changeTransitionNameButton.Parent" xml:space="preserve">
-    <value>storyGroup</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;changeTransitionNameButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="pasteFromClipboardButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pasteFromClipboardButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 241</value>
+  </data>
+  <data name="pasteFromClipboardButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 28</value>
+  </data>
+  <data name="pasteFromClipboardButton.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="pasteFromClipboardButton.Text" xml:space="preserve">
+    <value>Paste from clipboard</value>
+  </data>
+  <data name="&gt;&gt;pasteFromClipboardButton.Name" xml:space="preserve">
+    <value>pasteFromClipboardButton</value>
+  </data>
+  <data name="&gt;&gt;pasteFromClipboardButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pasteFromClipboardButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;pasteFromClipboardButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="transitionsList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="transitionsList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 343</value>
+  </data>
+  <data name="transitionsList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 64</value>
+  </data>
+  <data name="transitionsList.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;transitionsList.Name" xml:space="preserve">
+    <value>transitionsList</value>
+  </data>
+  <data name="&gt;&gt;transitionsList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;transitionsList.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;transitionsList.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 306</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 34</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Transitions</value>
+  </data>
+  <data name="label3.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="changeIdButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="changeIdButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 37</value>
+  </data>
+  <data name="changeIdButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 28</value>
+  </data>
+  <data name="changeIdButton.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="changeIdButton.Text" xml:space="preserve">
+    <value>Change id</value>
+  </data>
+  <data name="&gt;&gt;changeIdButton.Name" xml:space="preserve">
+    <value>changeIdButton</value>
+  </data>
+  <data name="&gt;&gt;changeIdButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;changeIdButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;changeIdButton.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="idLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="idLabel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="idLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="idLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>429, 34</value>
+  </data>
+  <data name="idLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="idLabel.Text" xml:space="preserve">
+    <value>Id:</value>
+  </data>
+  <data name="idLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;idLabel.Name" xml:space="preserve">
+    <value>idLabel</value>
+  </data>
+  <data name="&gt;&gt;idLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;idLabel.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;idLabel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="removeImageButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="removeImageButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 278</value>
+    <value>3, 275</value>
   </data>
   <data name="removeImageButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 36</value>
+    <value>124, 28</value>
   </data>
   <data name="removeImageButton.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -414,74 +505,28 @@
     <value>removeImageButton</value>
   </data>
   <data name="&gt;&gt;removeImageButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;removeImageButton.Parent" xml:space="preserve">
-    <value>storyGroup</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;removeImageButton.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 317</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 17</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Transitions</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>storyGroup</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="transitionsList.ItemHeight" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="transitionsList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 340</value>
-  </data>
-  <data name="transitionsList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 180</value>
-  </data>
-  <data name="transitionsList.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;transitionsList.Name" xml:space="preserve">
-    <value>transitionsList</value>
-  </data>
-  <data name="&gt;&gt;transitionsList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;transitionsList.Parent" xml:space="preserve">
-    <value>storyGroup</value>
-  </data>
-  <data name="&gt;&gt;transitionsList.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="previewPicture.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="previewPicture.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="previewPicture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>210, 194</value>
+    <value>154, 207</value>
   </data>
   <data name="previewPicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 100</value>
+    <value>124, 96</value>
+  </data>
+  <data name="previewPicture.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
   </data>
   <data name="previewPicture.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -490,43 +535,55 @@
     <value>previewPicture</value>
   </data>
   <data name="&gt;&gt;previewPicture.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;previewPicture.Parent" xml:space="preserve">
-    <value>storyGroup</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;previewPicture.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="selectImageButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 194</value>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="selectImageButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 37</value>
+  <data name="label2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="selectImageButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 68</value>
   </data>
-  <data name="selectImageButton.Text" xml:space="preserve">
-    <value>Select image</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 34</value>
   </data>
-  <data name="&gt;&gt;selectImageButton.Name" xml:space="preserve">
-    <value>selectImageButton</value>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;selectImageButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Text</value>
   </data>
-  <data name="&gt;&gt;selectImageButton.Parent" xml:space="preserve">
-    <value>storyGroup</value>
+  <data name="label2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;selectImageButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="textBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="textBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 95</value>
+    <value>3, 105</value>
   </data>
   <data name="textBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 92</value>
+    <value>429, 96</value>
   </data>
   <data name="textBox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -538,73 +595,79 @@
     <value>textBox</value>
   </data>
   <data name="&gt;&gt;textBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBox.Parent" xml:space="preserve">
-    <value>storyGroup</value>
+    <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;textBox.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="selectImageButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 75</value>
+  <data name="selectImageButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 207</value>
   </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 17</value>
+  <data name="selectImageButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 28</value>
   </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="selectImageButton.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Text</value>
+  <data name="selectImageButton.Text" xml:space="preserve">
+    <value>Select image</value>
   </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
+  <data name="&gt;&gt;selectImageButton.Name" xml:space="preserve">
+    <value>selectImageButton</value>
   </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;selectImageButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>storyGroup</value>
+  <data name="&gt;&gt;selectImageButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;selectImageButton.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 22</value>
+  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 23</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
+  <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>435, 410</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Identifier:</value>
+  <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
     <value>storyGroup</value>
   </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>13</value>
+  <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="removeTransitionButton" Row="9" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="markAsRootButton" Row="4" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="changeTransitionNameButton" Row="8" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="pasteFromClipboardButton" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="transitionsList" Row="8" RowSpan="2" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="label3" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="changeIdButton" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="idLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="5" /&gt;&lt;Control Name="removeImageButton" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="previewPicture" Row="4" RowSpan="3" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label2" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="textBox" Row="3" RowSpan="1" Column="0" ColumnSpan="5" /&gt;&lt;Control Name="selectImageButton" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,30,Percent,5,Percent,30,Percent,5,Percent,30" /&gt;&lt;Rows Styles="Percent,8,333332,Percent,8,333332,Percent,8,333332,Percent,24,999998,Percent,8,333332,Percent,8,333332,Percent,8,333332,Percent,8,333332,Percent,8,333332,Percent,8,333332" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="storyGroup.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="storyGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>534, 31</value>
+    <value>449, 3</value>
   </data>
   <data name="storyGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>454, 530</value>
+    <value>441, 436</value>
   </data>
   <data name="storyGroup.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -616,13 +679,13 @@
     <value>storyGroup</value>
   </data>
   <data name="&gt;&gt;storyGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;storyGroup.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;storyGroup.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="selectImageFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>152, 17</value>
@@ -636,11 +699,47 @@
   <metadata name="exportFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>764, 17</value>
   </metadata>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>893, 442</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="graphGroup" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="storyGroup" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,50,Percent,50,Absolute,20" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
+  </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>999, 570</value>
+    <value>893, 470</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Storyteller Editor</value>
@@ -649,90 +748,90 @@
     <value>fileToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;saveProjectToolStripMenuItem.Name" xml:space="preserve">
     <value>saveProjectToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;saveProjectToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;openProjectToolStripMenuItem.Name" xml:space="preserve">
     <value>openProjectToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;openProjectToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;exportToolStripMenuItem.Name" xml:space="preserve">
     <value>exportToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;exportToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;storyToolStripMenuItem.Name" xml:space="preserve">
     <value>storyToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;storyToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;createNewToolStripMenuItem.Name" xml:space="preserve">
     <value>createNewToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;createNewToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;removeSelectedToolStripMenuItem.Name" xml:space="preserve">
     <value>removeSelectedToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;removeSelectedToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;languageToolStripMenuItem.Name" xml:space="preserve">
     <value>languageToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;languageToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;englishToolStripMenuItem.Name" xml:space="preserve">
     <value>englishToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;englishToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;russianToolStripMenuItem.Name" xml:space="preserve">
     <value>russianToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;russianToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;selectImageFileDialog.Name" xml:space="preserve">
     <value>selectImageFileDialog</value>
   </data>
   <data name="&gt;&gt;selectImageFileDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;saveProjectFileDialog.Name" xml:space="preserve">
     <value>saveProjectFileDialog</value>
   </data>
   <data name="&gt;&gt;saveProjectFileDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;openProjectFileDialog.Name" xml:space="preserve">
     <value>openProjectFileDialog</value>
   </data>
   <data name="&gt;&gt;openProjectFileDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;exportFileDialog.Name" xml:space="preserve">
     <value>exportFileDialog</value>
   </data>
   <data name="&gt;&gt;exportFileDialog.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Form1</value>
+    <value>MainForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
