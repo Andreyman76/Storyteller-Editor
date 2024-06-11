@@ -7,7 +7,6 @@ public class ExportContext(string dbFileName) : DbContext
 {
     private readonly string _dbFileName = dbFileName;
 
-    public DbSet<ExportMetadata> Metadata { get; set; }
     public DbSet<ExportNode> Nodes { get; set; }
     public DbSet<ExportTransition> Transitions { get; set; }
 

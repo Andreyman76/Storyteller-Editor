@@ -10,4 +10,5 @@ public class ExportNode
     public required string Name { get; set; }
     public string Text { get; set; } = string.Empty;
     public byte[]? Image { get; set; }
+    public bool IsRoot { get; set; }
 }

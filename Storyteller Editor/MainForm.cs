@@ -643,11 +643,6 @@ public partial class MainForm : Form
             using var exportContext = new ExportContext(exportFileDialog.FileName);
             exportContext.Database.EnsureCreated();
 
-            exportContext.Metadata.Add(new ExportMetadata
-            {
-                RootNodeId = settings.RootNode!.Id
-            });
-
             var exportNodes = new List<ExportNode>();
             var exportTransitions = new List<ExportTransition>();
 
@@ -660,7 +655,8 @@ public partial class MainForm : Form
                         Id = transition.From.Id,
                         Name = transition.From.Name,
                         Text = transition.From.Text,
-                        Image = transition.From.Image
+                        Image = transition.From.Image,
+                        IsRoot = transition.From.Id == settings.RootNode!.Id
                     });
                 }
 
@@ -671,7 +667,8 @@ public partial class MainForm : Form
                         Id = transition.To.Id,
                         Name = transition.To.Name,
                         Text = transition.To.Text,
-                        Image = transition.To.Image
+                        Image = transition.To.Image,
+                        IsRoot = transition.To.Id == settings.RootNode!.Id,
                     });
                 }
 
