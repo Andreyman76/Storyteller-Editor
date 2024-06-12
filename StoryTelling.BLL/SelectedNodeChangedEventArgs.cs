@@ -1,7 +1,7 @@
 ﻿using StoryTelling.DAL.ProjectModel;
 namespace StoryTelling.BLL;
 
-public class NodeSelectedEventArgs
+public class SelectedNodeChangedEventArgs
 {
     public ProjectNode? SelectedNode { get; set; }
 }

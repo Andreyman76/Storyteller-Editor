@@ -2,7 +2,7 @@
 
 namespace StoryTelling.BLL;
 
-public class TransitionsChangedEventArgs : EventArgs
+public class SelectedTransitionsChangedEventArgs : EventArgs
 {
     public required IEnumerable<Transition> Transitions { get; set; }
 }

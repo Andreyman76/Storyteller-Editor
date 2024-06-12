@@ -24,11 +24,11 @@ public partial class MainForm : Form
 
         _editor.GraphImageSize = graphPicture.Size;
         _editor.GraphChanged += OnGraphChanged;
-        _editor.TransitionsChanged += OnTransitionsChanged;
-        _editor.NodeSelected += OnNodeSelected;
+        _editor.SelectedTransitionsChanged += OnSelectedTransitionsChanged;
+        _editor.SelectedNodeChanged += OnSelectedNodeChanged;
     }
 
-    private void OnNodeSelected(object? sender, NodeSelectedEventArgs e)
+    private void OnSelectedNodeChanged(object? sender, SelectedNodeChangedEventArgs e)
     {
         if (e.SelectedNode == null)
         {
@@ -43,7 +43,7 @@ public partial class MainForm : Form
         storyGroup.Visible = true;
     }
 
-    private void OnTransitionsChanged(object? sender, TransitionsChangedEventArgs e)
+    private void OnSelectedTransitionsChanged(object? sender, SelectedTransitionsChangedEventArgs e)
     {
         transitionsList.DataSource = e.Transitions;
     }
@@ -59,23 +59,6 @@ public partial class MainForm : Form
         _editor.CreateNewProject();
     }
 
-    private static bool ValidateStringLength(string str, int maxLength)
-    {
-        if (str.Length > maxLength)
-        {
-            MessageBox.Show(
-                MyStrings.TooLong, 
-                MyStrings.Warning,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Warning
-                );
-
-            return false;
-        }
-
-        return true;
-    }
-
     private void OnCreateNewToolStripMenuItemClick(object sender, EventArgs e)
     {
         _editor.AddNewNode();
@@ -84,9 +67,9 @@ public partial class MainForm : Form
     private void OnFormClosing(object sender, FormClosingEventArgs e)
     {
         var result = MessageBox.Show(
-            MyStrings.SaveBeforeClosing, 
-            MyStrings.Confirm, 
-            MessageBoxButtons.YesNoCancel, 
+            MyStrings.SaveBeforeClosing,
+            MyStrings.Confirm,
+            MessageBoxButtons.YesNoCancel,
             MessageBoxIcon.Information
             );
 
@@ -128,7 +111,7 @@ public partial class MainForm : Form
                 {
                     var name = Interaction.InputBox(MyStrings.SetTransitionName.Replace("@from", _editor.TransitionFrom.Name).Replace("@to", transitionTo.Name), "Storyteller Editor");
 
-                    if (!ValidateStringLength(name, 50))
+                    if (ValidateStringLength(name, 50) == false)
                     {
                         return;
                     }
@@ -139,7 +122,7 @@ public partial class MainForm : Form
                         {
                             MessageBox.Show(
                                 MyStrings.TransitionExists.Replace("@id", _editor.TransitionFrom.Name),
-                                MyStrings.Error, 
+                                MyStrings.Error,
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error
                                 );
@@ -178,14 +161,14 @@ public partial class MainForm : Form
 
     private void OnChangeIdButtonClick(object sender, EventArgs e)
     {
-        if (_editor.SelectedNode == null)
+        if (_editor.HasSelectedNode == false)
         {
             return;
         }
 
-        var newName = Interaction.InputBox(MyStrings.EnterNewStoryId.Replace("@id", _editor.SelectedNode.Name), "Storyteller Editor");
+        var newName = Interaction.InputBox(MyStrings.EnterNewStoryId.Replace("@id", _editor.SelectedNodeName), "Storyteller Editor");
 
-        if (!ValidateStringLength(newName, 50))
+        if (ValidateStringLength(newName, 50) == false)
         {
             return;
         }
@@ -196,7 +179,7 @@ public partial class MainForm : Form
             {
                 MessageBox.Show(
                     MyStrings.StoryExists.Replace("@id", newName),
-                    MyStrings.Error, 
+                    MyStrings.Error,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                     );
@@ -256,7 +239,7 @@ public partial class MainForm : Form
         {
             MessageBox.Show(
                 MyStrings.NeedSelectTransition,
-                MyStrings.Info, 
+                MyStrings.Info,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
                 );
@@ -266,7 +249,7 @@ public partial class MainForm : Form
         var transition = transitionsList.Items[index] as Transition ?? throw new Exception("Convert to Transition failed");
         var newName = Interaction.InputBox(MyStrings.NewTransitionName.Replace("@transition", transition?.ToString()), "Storyteller Editor");
 
-        if (!ValidateStringLength(newName, 50))
+        if (ValidateStringLength(newName, 50) == false)
         {
             return;
         }
@@ -276,9 +259,9 @@ public partial class MainForm : Form
             if (_editor.ChangeTransitionName(transition!, newName) == false)
             {
                 MessageBox.Show(
-                    MyStrings.TransitionExists.Replace("@id", transition?.From), 
-                    MyStrings.Error, 
-                    MessageBoxButtons.OK, 
+                    MyStrings.TransitionExists.Replace("@id", transition?.From),
+                    MyStrings.Error,
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                     );
             }
@@ -292,11 +275,12 @@ public partial class MainForm : Form
         if (index < 0)
         {
             MessageBox.Show(
-                MyStrings.NeedSelectTransition, 
-                MyStrings.Info, 
-                MessageBoxButtons.OK, 
+                MyStrings.NeedSelectTransition,
+                MyStrings.Info,
+                MessageBoxButtons.OK,
                 MessageBoxIcon.Information
                 );
+
             return;
         }
 
@@ -323,7 +307,7 @@ public partial class MainForm : Form
             MessageBox.Show(
                 MyStrings.ProjectSaved,
                 MyStrings.Info,
-                MessageBoxButtons.OK, 
+                MessageBoxButtons.OK,
                 MessageBoxIcon.Information
                 );
         }
@@ -347,7 +331,7 @@ public partial class MainForm : Form
         {
             MessageBox.Show(
                 MyStrings.NoRoot,
-                MyStrings.Error, 
+                MyStrings.Error,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error
                 );
@@ -395,5 +379,22 @@ public partial class MainForm : Form
     private void OnGraphPictureSizeChanged(object sender, EventArgs e)
     {
         _editor.GraphImageSize = graphPicture.Size;
+    }
+
+    private static bool ValidateStringLength(string str, int maxLength)
+    {
+        if (str.Length > maxLength)
+        {
+            MessageBox.Show(
+                MyStrings.TooLong,
+                MyStrings.Warning,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+                );
+
+            return false;
+        }
+
+        return true;
     }
 }

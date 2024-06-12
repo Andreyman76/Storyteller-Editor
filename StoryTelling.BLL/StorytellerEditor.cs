@@ -8,28 +8,30 @@ namespace StoryTelling.BLL;
 
 public class StorytellerEditor(string dbFileName)
 {
-    public Node? SelectedNode { get; private set; }
     public Node? TransitionFrom { get; set; }
     public Size GraphImageSize { get; set; }
     public bool HasRoot => string.IsNullOrWhiteSpace(_rootNodeName) == false;
+    public bool HasSelectedNode => _selectedNode != null;
+    public string SelectedNodeName => _selectedNode?.Name ?? string.Empty;
 
     public event EventHandler<GraphChangedEventArgs>? GraphChanged;
-    public event EventHandler<TransitionsChangedEventArgs>? TransitionsChanged;
-    public event EventHandler<NodeSelectedEventArgs>? NodeSelected;
+    public event EventHandler<SelectedTransitionsChangedEventArgs>? SelectedTransitionsChanged;
+    public event EventHandler<SelectedNodeChangedEventArgs>? SelectedNodeChanged;
 
     private readonly string _dbFileName = dbFileName;
     private readonly List<Node> _nodes = [];
     private readonly List<Transition> _transitions = [];
 
-    private int _nodesCounter = 0;
-    private Node? _grabbed = null;
-    private Point _pivotOffset;
+    private Node? _selectedNode;
+    private int _nodesCounter;
+    private Node? _grabbed;
+    private Point _pivotOffset = new();
     private int _fontSize = 16;
     private Point _offsetStart = new();
-    private bool _changingOffset = false;
+    private bool _changingOffset;
     private Font _currentFont = new("Arial", 16);
     private string? _rootNodeName;
-    
+
     public void CreateNewProject()
     {
         File.Delete(_dbFileName);
@@ -62,7 +64,7 @@ public class StorytellerEditor(string dbFileName)
 
         UpdateTransitions();
 
-        SelectedNode = null;
+        _selectedNode = null;
         DisplayNode(null);
         DrawNodes();
     }
@@ -152,8 +154,7 @@ public class StorytellerEditor(string dbFileName)
                 Name = transition.Name,
                 From = exportNodes.First(x => x.Id == transition.From.Id),
                 To = exportNodes.First(x => x.Id == transition.To.Id)
-            }
-            );
+            });
         }
 
         exportContext.SaveChanges();
@@ -192,7 +193,7 @@ public class StorytellerEditor(string dbFileName)
 
     public bool ChangeSelectedNodeName(string name)
     {
-        if (SelectedNode == null)
+        if (_selectedNode == null)
         {
             return true;
         }
@@ -203,41 +204,41 @@ public class StorytellerEditor(string dbFileName)
         }
 
         using var context = new ProjectContext(_dbFileName);
-        var node = context.Nodes.Where(x => x.Name == SelectedNode.Name).First();
+        var node = context.Nodes.Where(x => x.Name == _selectedNode.Name).First();
         node.Name = name;
         context.SaveChanges();
 
-        if (SelectedNode.Name == _rootNodeName)
+        if (_selectedNode.Name == _rootNodeName)
         {
             _rootNodeName = name;
         }
 
-        SelectedNode.Name = name;
+        _selectedNode.Name = name;
 
         UpdateTransitions();
         DrawNodes();
-        DisplayNode(SelectedNode);
+        DisplayNode(_selectedNode);
 
         return true;
     }
 
     public void ChangeSelectedNodeText(string text)
     {
-        if (SelectedNode == null)
+        if (_selectedNode == null)
         {
             return;
         }
 
         using var context = new ProjectContext(_dbFileName);
 
-        var node = context.Nodes.Where(x => x.Name == SelectedNode.Name).First();
+        var node = context.Nodes.Where(x => x.Name == _selectedNode.Name).First();
         node.Text = text;
         context.SaveChanges();
     }
 
     public void ChangeSelectedNodeImage(Image? img)
     {
-        if (SelectedNode == null)
+        if (_selectedNode == null)
         {
             return;
         }
@@ -245,45 +246,45 @@ public class StorytellerEditor(string dbFileName)
         var blob = img?.ToBytes();
         using var context = new ProjectContext(_dbFileName);
 
-        var node = context.Nodes.Where(x => x.Name == SelectedNode.Name).First();
+        var node = context.Nodes.Where(x => x.Name == _selectedNode.Name).First();
         node.Image = blob;
         context.SaveChanges();
 
-        SelectedNode = node;
+        _selectedNode = node;
 
-        DisplayNode(SelectedNode);
+        DisplayNode(_selectedNode);
     }
 
     public void MarkSelectedNodeAsRoot()
     {
-        if (SelectedNode == null)
+        if (_selectedNode == null)
         {
             return;
         }
 
-        _rootNodeName = SelectedNode.Name;
+        _rootNodeName = _selectedNode.Name;
         DrawNodes();
     }
 
     public void RemoveSelectedNode()
     {
-        if (SelectedNode == null)
+        if (_selectedNode == null)
         {
             return;
         }
 
         using var context = new ProjectContext(_dbFileName);
-        var node = context.Nodes.Where(x => x.Name == SelectedNode.Name).First();
+        var node = context.Nodes.Where(x => x.Name == _selectedNode.Name).First();
         context.Nodes.Remove(node);
         context.SaveChanges();
 
-        if (SelectedNode.Name == _rootNodeName)
+        if (_selectedNode.Name == _rootNodeName)
         {
             _rootNodeName = null;
         }
 
-        _nodes.Remove(SelectedNode);
-        SelectedNode = null;
+        _nodes.Remove(_selectedNode);
+        _selectedNode = null;
 
         UpdateTransitions();
         DisplayNode(null);
@@ -318,7 +319,7 @@ public class StorytellerEditor(string dbFileName)
         context.SaveChanges();
 
         UpdateTransitions();
-        DisplayTransitions(SelectedNode);
+        DisplayTransitions(_selectedNode);
 
         return true;
     }
@@ -336,7 +337,7 @@ public class StorytellerEditor(string dbFileName)
         context.SaveChanges();
 
         UpdateTransitions();
-        DisplayTransitions(SelectedNode);
+        DisplayTransitions(_selectedNode);
 
         return true;
     }
@@ -349,7 +350,7 @@ public class StorytellerEditor(string dbFileName)
         context.SaveChanges();
 
         UpdateTransitions();
-        DisplayTransitions(SelectedNode);
+        DisplayTransitions(_selectedNode);
         DrawNodes();
     }
 
@@ -357,10 +358,10 @@ public class StorytellerEditor(string dbFileName)
     {
         _grabbed = FindNode(position);
 
-        if (SelectedNode != _grabbed)
+        if (_selectedNode != _grabbed)
         {
-            SelectedNode = _grabbed;
-            DisplayNode(SelectedNode);
+            _selectedNode = _grabbed;
+            DisplayNode(_selectedNode);
         }
 
         if (_grabbed != null)
@@ -445,8 +446,8 @@ public class StorytellerEditor(string dbFileName)
     {
         if (node == null)
         {
-            NodeSelected?.Invoke(this,
-                new NodeSelectedEventArgs
+            SelectedNodeChanged?.Invoke(this,
+                new SelectedNodeChangedEventArgs
                 {
                     SelectedNode = null
                 });
@@ -457,7 +458,7 @@ public class StorytellerEditor(string dbFileName)
         using var context = new ProjectContext(_dbFileName);
         var n = context.Nodes.AsNoTracking().Where(x => x.Name == node.Name).First();
 
-        NodeSelected?.Invoke(this, new NodeSelectedEventArgs
+        SelectedNodeChanged?.Invoke(this, new SelectedNodeChangedEventArgs
         {
             SelectedNode = n
         });
@@ -517,8 +518,8 @@ public class StorytellerEditor(string dbFileName)
     {
         var transitions = _transitions.FindAll(x => x.From == node?.Name);
 
-        TransitionsChanged?.Invoke(this,
-            new TransitionsChangedEventArgs
+        SelectedTransitionsChanged?.Invoke(this,
+            new SelectedTransitionsChangedEventArgs
             {
                 Transitions = transitions
             });

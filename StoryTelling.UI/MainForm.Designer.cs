@@ -1,5 +1,4 @@
-﻿
-namespace StoryTelling.UI;
+﻿namespace StoryTelling.UI;
 
 partial class MainForm
 {
@@ -345,4 +344,3 @@ partial class MainForm
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 }
-
