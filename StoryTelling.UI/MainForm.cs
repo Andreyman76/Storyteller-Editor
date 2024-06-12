@@ -1,14 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
-using StoryTelling.DAL.Project;
-using StoryTelling.DAL.Export;
-using StoryTelling.Entities;
+﻿using Microsoft.VisualBasic;
+using StoryTelling.BLL;
+using StoryTelling.BLL.Entities;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -16,20 +12,8 @@ namespace StoryTelling.UI;
 
 public partial class MainForm : Form
 {
-    private readonly string _dbFileName = "Latest project.stp";
+    private readonly StorytellerEditor _editor = new("Latest project.stp");
     private readonly Image _blankImage = new Bitmap(100, 100);
-    private readonly List<Node> _nodes = [];
-    private int _nodesCounter = 0;
-    private Node? _selected = null;
-    private Node? _grabbed = null;
-    private Point _pivotOffset;
-    private Node? _transitionFrom = null;
-    private readonly List<Transition> _transitions = [];
-    private int _fontSize = 16;
-    private Point _offsetStart = new();
-    private bool _changingOffset = false;
-    private Font _currentFont = new("Arial", 16);
-    private string? _root;
 
     public MainForm()
     {
@@ -37,66 +21,55 @@ public partial class MainForm : Form
         Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(Properties.Settings.Default.Language);
         InitializeComponent();
         WindowState = FormWindowState.Maximized;
+
+        _editor.GraphImageSize = graphPicture.Size;
+        _editor.GraphChanged += OnGraphChanged;
+        _editor.TransitionsChanged += OnTransitionsChanged;
+        _editor.NodeSelected += OnNodeSelected;
+    }
+
+    private void OnNodeSelected(object? sender, NodeSelectedEventArgs e)
+    {
+        if (e.SelectedNode == null)
+        {
+            storyGroup.Visible = false;
+            return;
+        }
+
+        idLabel.Text = "Id: " + e.SelectedNode.Name;
+        textBox.Text = e.SelectedNode.Text;
+        previewPicture.Image = e.SelectedNode.Image?.CreateImage() ?? _blankImage;
+
+        storyGroup.Visible = true;
+    }
+
+    private void OnTransitionsChanged(object? sender, TransitionsChangedEventArgs e)
+    {
+        transitionsList.DataSource = e.Transitions;
+    }
+
+    private void OnGraphChanged(object? sender, GraphChangedEventArgs e)
+    {
+        graphPicture.Image = e.Image;
     }
 
     private void OnFormLoad(object sender, EventArgs e)
     {
-        File.Delete(_dbFileName);
         storyGroup.Visible = false;
-
-        using var context = new ProjectContext(_dbFileName);
-        context.Database.EnsureCreated();
-        context.SaveChanges();
-    }
-
-    private void DrawNodes()
-    {
-        var img = new Bitmap(graphPicture.Width, graphPicture.Height);
-        using var g = Graphics.FromImage(img);
-
-        foreach (var node in _nodes)
-        {
-            var isRoot = string.IsNullOrWhiteSpace(_root) == false && node.Name == _root;
-
-            g.DrawNode(node, _currentFont, isRoot);
-        }
-
-        foreach (var transition in _transitions)
-        {
-            var from = _nodes.Find(x => x.Name == transition.From);
-            var to = _nodes.Find(x => x.Name == transition.To);
-
-            if (from != null && to != null)
-            {
-                g.DrawArrow(from.GetPointOnBorder(to.Center()), to.GetPointOnBorder(from.Center()));
-            }
-        }
-
-        graphPicture.Image = img;
-    }
-
-    private void UpdateTransitions()
-    {
-        _transitions.Clear();
-        using var context = new ProjectContext(_dbFileName);
-
-        var transitions = context.Transitions.
-            AsNoTracking().
-            Include(x => x.From).
-            Include(x => x.To).
-            ToArray();
-
-        foreach (var transition in transitions)
-        {
-            _transitions.Add(transition);
-        }
+        _editor.CreateNewProject();
     }
 
     private static bool ValidateStringLength(string str, int maxLength)
     {
         if (str.Length > maxLength)
         {
-            MessageBox.Show(MyStrings.TooLong);
+            MessageBox.Show(
+                MyStrings.TooLong, 
+                MyStrings.Warning,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+                );
+
             return false;
         }
 
@@ -105,140 +78,55 @@ public partial class MainForm : Form
 
     private void OnCreateNewToolStripMenuItemClick(object sender, EventArgs e)
     {
-        string id;
-
-        do
-        {
-            id = $"story{_nodesCounter++}";
-        }
-        while (_nodes.Find(x => x.Name == id) != null);
-
-        var node = new Node(id, new Point(0, 0));
-
-        if (_nodesCounter == 1)
-        {
-            _root = node.Name;
-        }
-
-        _nodes.Add(node);
-        DrawNodes();
-
-        using var context = new ProjectContext(_dbFileName);
-
-        var n = new ProjectNode
-        {
-            Name = node.Name
-        };
-
-        context.Nodes.Add(n);
-        context.SaveChanges();
+        _editor.AddNewNode();
     }
 
     private void OnFormClosing(object sender, FormClosingEventArgs e)
     {
-        var result = MessageBox.Show(MyStrings.SaveBeforeClosing, MyStrings.Confirm, MessageBoxButtons.YesNo);
+        var result = MessageBox.Show(
+            MyStrings.SaveBeforeClosing, 
+            MyStrings.Confirm, 
+            MessageBoxButtons.YesNoCancel, 
+            MessageBoxIcon.Information
+            );
 
         if (result == DialogResult.Yes)
         {
             SaveProject();
         }
-    }
-
-    private Node? FindNode(Point position)
-    {
-        foreach (var node in _nodes)
+        else if (result == DialogResult.Cancel)
         {
-            if (node.Intersects(position))
-            {
-                return node;
-            }
+            e.Cancel = true;
         }
-
-        return null;
-    }
-
-    private void DisplayTransitions(Node? node)
-    {
-        var transitions = _transitions.FindAll(x => x.From == node?.Name);
-
-        transitionsList.Items.Clear();
-
-        foreach (var transition in transitions)
-        {
-            transitionsList.Items.Add(transition);
-        }
-    }
-
-    private void DisplayNode(Node? node)
-    {
-        if (node == null)
-        {
-            storyGroup.Visible = false;
-            return;
-        }
-
-        idLabel.Text = "Id: " + node.Name;
-        transitionsList.Items.Clear();
-
-        using var context = new ProjectContext(_dbFileName);
-        var n = context.Nodes.AsNoTracking().Where(x => x.Name == node.Name).First();
-
-        textBox.Text = n.Text;
-
-        if (n.Image == null)
-        {
-            previewPicture.Image = _blankImage;
-        }
-        else
-        {
-            previewPicture.Image = n.Image.CreateImage();
-        }
-
-        DisplayTransitions(node);
-
-        storyGroup.Visible = true;
     }
 
     private void OnGraphPictureMouseDown(object sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Left)
         {
-            _grabbed = FindNode(e.Location);
-
-            if (_selected != _grabbed)
-            {
-                _selected = _grabbed;
-                DisplayNode(_selected);
-            }
-
-            if (_grabbed != null)
-            {
-                _pivotOffset = new Point(e.X - _grabbed.Position.X, e.Y - _grabbed.Position.Y);
-            }
-
+            _editor.GrabNode(e.Location);
             return;
         }
 
         if (e.Button == MouseButtons.Middle)
         {
-            _changingOffset = true;
-            _offsetStart = e.Location;
+            _editor.StartMoveGraph(e.Location);
             return;
         }
 
         if (e.Button == MouseButtons.Right)
         {
-            if (_transitionFrom == null)
+            if (_editor.TransitionFrom == null)
             {
-                _transitionFrom = FindNode(e.Location);
+                _editor.TransitionFrom = _editor.FindNode(e.Location);
             }
             else
             {
-                var transitionTo = FindNode(e.Location);
+                var transitionTo = _editor.FindNode(e.Location);
 
                 if (transitionTo != null)
                 {
-                    var name = Interaction.InputBox(MyStrings.SetTransitionName.Replace("@from", _transitionFrom.Name).Replace("@to", transitionTo.Name), "Storyteller Editor");
+                    var name = Interaction.InputBox(MyStrings.SetTransitionName.Replace("@from", _editor.TransitionFrom.Name).Replace("@to", transitionTo.Name), "Storyteller Editor");
 
                     if (!ValidateStringLength(name, 50))
                     {
@@ -247,36 +135,22 @@ public partial class MainForm : Form
 
                     if (string.IsNullOrWhiteSpace(name) == false)
                     {
-                        if (_transitions.Find(x => x.From == _transitionFrom.Name && x.Name == name) != null)
+                        if (_editor.AddNewTransition(name, transitionTo) == false)
                         {
-                            MessageBox.Show(MyStrings.TransitionExists.Replace("@id", _transitionFrom.Name));
-                            return;
+                            MessageBox.Show(
+                                MyStrings.TransitionExists.Replace("@id", _editor.TransitionFrom.Name),
+                                MyStrings.Error, 
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error
+                                );
                         }
-
-                        using var context = new ProjectContext(_dbFileName);
-
-                        var firstNode = context.Nodes.Where(x => x.Name == _transitionFrom.Name).First();
-                        var secondNode = context.Nodes.Where(x => x.Name == transitionTo.Name).First();
-
-                        var transition = new ProjectTransition
-                        {
-                            From = firstNode,
-                            To = secondNode,
-                            Name = name
-                        };
-
-                        context.Transitions.Add(transition);
-                        context.SaveChanges();
-
-                        UpdateTransitions();
-                        DisplayTransitions(_selected);
                     }
                 }
 
-                _transitionFrom = null;
+                _editor.TransitionFrom = null;
             }
 
-            DrawNodes();
+            _editor.RefereshImage();
         }
     }
 
@@ -284,69 +158,32 @@ public partial class MainForm : Form
     {
         if (e.Button == MouseButtons.Left)
         {
-            _grabbed = null;
+            _editor.UngrabNode();
         }
         else if (e.Button == MouseButtons.Middle)
         {
-            _changingOffset = false;
+            _editor.StopMoveGraph();
         }
     }
 
     private void OnGraphPictureMouseMove(object sender, MouseEventArgs e)
     {
-        if (e.Button == MouseButtons.Middle)
-        {
-            if (_changingOffset)
-            {
-                var p = new Point(e.X - _offsetStart.X, e.Y - _offsetStart.Y);
-                _offsetStart = e.Location;
-
-                foreach (var node in _nodes)
-                {
-                    node.Position = new Point(node.Position.X + p.X, node.Position.Y + p.Y);
-                }
-
-                DrawNodes();
-            }
-        }
-
-        if (_grabbed != null)
-        {
-            _grabbed.Position = new Point(e.X - _pivotOffset.X, e.Y - _pivotOffset.Y);
-            DrawNodes();
-        }
-
-        if (_transitionFrom != null)
-        {
-            DrawNodes();
-
-            using var g = Graphics.FromImage(graphPicture.Image);
-            g.DrawArrow(_transitionFrom.GetPointOnBorder(e.Location), e.Location);
-        }
+        _editor.MovePointer(e.Location, e.Button == MouseButtons.Middle);
     }
 
     private void OnTextBoxTextChanged(object sender, EventArgs e)
     {
-        if (_selected == null)
-        {
-            return;
-        }
-
-        using var context = new ProjectContext(_dbFileName);
-
-        var node = context.Nodes.Where(x => x.Name == _selected.Name).First();
-        node.Text = textBox.Text;
-        context.SaveChanges();
+        _editor.ChangeSelectedNodeText(textBox.Text);
     }
 
     private void OnChangeIdButtonClick(object sender, EventArgs e)
     {
-        if (_selected == null)
+        if (_editor.SelectedNode == null)
         {
             return;
         }
 
-        var newName = Interaction.InputBox(MyStrings.EnterNewStoryId.Replace("@id", _selected.Name), "Storyteller Editor");
+        var newName = Interaction.InputBox(MyStrings.EnterNewStoryId.Replace("@id", _editor.SelectedNode.Name), "Storyteller Editor");
 
         if (!ValidateStringLength(newName, 50))
         {
@@ -355,70 +192,29 @@ public partial class MainForm : Form
 
         if (string.IsNullOrWhiteSpace(newName) == false)
         {
-            if (_nodes.Find(x => x.Name == newName) != null)
+            if (_editor.ChangeSelectedNodeName(newName) == false)
             {
-                MessageBox.Show(MyStrings.StoryExists.Replace("@id", newName));
-                return;
+                MessageBox.Show(
+                    MyStrings.StoryExists.Replace("@id", newName),
+                    MyStrings.Error, 
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
             }
-
-            using var context = new ProjectContext(_dbFileName);
-            var node = context.Nodes.Where(x => x.Name == _selected.Name).First();
-            node.Name = newName;
-            context.SaveChanges();
-
-            if (_selected.Name == _root)
-            {
-                _root = newName;
-            }
-
-            _selected.Name = newName;
-            idLabel.Text = "Id: " + newName;
-
-            UpdateTransitions();
-            DrawNodes();
-        }
-    }
-
-    private void SetImageToSelectedNode(Image? img)
-    {
-        if (_selected == null)
-        {
-            return;
-        }
-
-        var blob = img?.ToBytes();
-        using var context = new ProjectContext(_dbFileName);
-
-        var node = context.Nodes.Where(x => x.Name == _selected.Name).First();
-        node.Image = blob;
-        context.SaveChanges();
-
-        _selected = node;
-
-        if (node.Image == null)
-        {
-            previewPicture.Image = _blankImage;
-        }
-        else
-        {
-            previewPicture.Image = node.Image.CreateImage();
         }
     }
 
     private void OnSelectImageButtonClick(object sender, EventArgs e)
     {
-        selectImageFileDialog.FileName = "";
         selectImageFileDialog.Filter = MyStrings.ImageFiles;
         selectImageFileDialog.Title = MyStrings.SelectImage;
+        selectImageFileDialog.FileName = string.Empty;
 
         if (selectImageFileDialog.ShowDialog() == DialogResult.OK)
         {
-            var stream = File.OpenRead(selectImageFileDialog.FileName);
+            using var stream = File.OpenRead(selectImageFileDialog.FileName);
             var img = Image.FromStream(stream);
-            SetImageToSelectedNode(img);
-
-            stream.Close();
-            stream.Dispose();
+            _editor.ChangeSelectedNodeImage(img);
         }
     }
 
@@ -428,63 +224,28 @@ public partial class MainForm : Form
 
         if (img != null)
         {
-            SetImageToSelectedNode(img);
+            _editor.ChangeSelectedNodeImage(img);
         }
     }
 
     private void OnRemoveImageButtonClick(object sender, EventArgs e)
     {
-        SetImageToSelectedNode(null);
+        _editor.ChangeSelectedNodeImage(null);
     }
 
     private void OnMarkAsRootButtonClick(object sender, EventArgs e)
     {
-        if (_selected == null)
-        {
-            return;
-        }
-
-        _root = _selected.Name;
-        DrawNodes();
+        _editor.MarkSelectedNodeAsRoot();
     }
 
     private void OnRemoveSelectedToolStripMenuItemClick(object sender, EventArgs e)
     {
-        if (_selected == null)
-        {
-            return;
-        }
-
-        using var context = new ProjectContext(_dbFileName);
-        var node = context.Nodes.Where(x => x.Name == _selected.Name).First();
-        context.Nodes.Remove(node);
-        context.SaveChanges();
-
-        if (_selected.Name == _root)
-        {
-            _root = null;
-        }
-
-        _nodes.Remove(_selected);
-        _selected = null;
-
-        UpdateTransitions();
-        DisplayNode(null);
-        DrawNodes();
+        _editor.RemoveSelectedNode();
     }
 
     private void OnGraphPictureMouseWheel(object sender, MouseEventArgs e)
     {
-        _fontSize += e.Delta > 0 ? 1 : -1;
-
-        if (_fontSize < 1)
-        {
-            _fontSize = 1;
-        }
-
-        _currentFont = new Font("Arial", _fontSize);
-
-        DrawNodes();
+        _editor.ChangeCurrentFontSize(e.Delta > 0 ? 1 : -1);
     }
 
     private void OnChangeTransitionNameButtonClick(object sender, EventArgs e)
@@ -493,7 +254,12 @@ public partial class MainForm : Form
 
         if (index < 0)
         {
-            MessageBox.Show(MyStrings.NeedSelectTransition);
+            MessageBox.Show(
+                MyStrings.NeedSelectTransition,
+                MyStrings.Info, 
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+                );
             return;
         }
 
@@ -507,19 +273,15 @@ public partial class MainForm : Form
 
         if (string.IsNullOrWhiteSpace(newName) == false)
         {
-            if (_transitions.Find(x => x.From == transition?.From && x.Name == newName) != null)
+            if (_editor.ChangeTransitionName(transition!, newName) == false)
             {
-                MessageBox.Show(MyStrings.TransitionExists.Replace("@id", transition?.From));
-                return;
+                MessageBox.Show(
+                    MyStrings.TransitionExists.Replace("@id", transition?.From), 
+                    MyStrings.Error, 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error
+                    );
             }
-
-            using var context = new ProjectContext(_dbFileName);
-            var t = context.Transitions.Where(x => x.Name == transition!.Name).First();
-            t.Name = newName;
-            context.SaveChanges();
-
-            UpdateTransitions();
-            DisplayTransitions(_selected);
         }
     }
 
@@ -529,20 +291,18 @@ public partial class MainForm : Form
 
         if (index < 0)
         {
-            MessageBox.Show(MyStrings.NeedSelectTransition);
+            MessageBox.Show(
+                MyStrings.NeedSelectTransition, 
+                MyStrings.Info, 
+                MessageBoxButtons.OK, 
+                MessageBoxIcon.Information
+                );
             return;
         }
 
         var transition = transitionsList.Items[index] as Transition ?? throw new Exception("Convert to Transition failed");
 
-        using var context = new ProjectContext(_dbFileName);
-        var t = context.Transitions.Where(x => x.Name == transition.Name).First();
-        context.Remove(t);
-        context.SaveChanges();
-
-        UpdateTransitions();
-        DisplayTransitions(_selected);
-        DrawNodes();
+        _editor.RemoveTransition(transition!);
     }
 
     private void OnSaveProjectToolStripMenuItemClick(object sender, EventArgs e)
@@ -554,148 +314,61 @@ public partial class MainForm : Form
     {
         saveProjectFileDialog.Title = MyStrings.SaveProject;
         saveProjectFileDialog.Filter = MyStrings.ProjectFile;
+        saveProjectFileDialog.FileName = string.Empty;
 
         if (saveProjectFileDialog.ShowDialog() == DialogResult.OK)
         {
-            using var context = new ProjectContext(_dbFileName);
-            var settings = context.Settings.ToArray();
-            context.RemoveRange(settings);
+            _editor.SaveProject(saveProjectFileDialog.FileName);
 
-            var rootNode = context.Nodes.Where(x => x.Name == _root).FirstOrDefault();
-
-            context.Add(new ProjectSettings
-            {
-                RootNode = rootNode,
-                FontSize = _fontSize,
-                NodesCounter = _nodesCounter
-            });
-
-            foreach (var node in _nodes)
-            {
-                var n = context.Nodes.Where(x => x.Name == node.Name).First();
-                n.X = node.Position.X;
-                n.Y = node.Position.Y;
-            }
-
-            context.SaveChanges();
-
-            File.Copy(_dbFileName, saveProjectFileDialog.FileName, true);
-
-            MessageBox.Show(MyStrings.ProjectSaved);
+            MessageBox.Show(
+                MyStrings.ProjectSaved,
+                MyStrings.Info,
+                MessageBoxButtons.OK, 
+                MessageBoxIcon.Information
+                );
         }
     }
 
     private void OnOpenProjectToolStripMenuItemClick(object sender, EventArgs e)
     {
         openProjectFileDialog.Title = MyStrings.OpenProject;
-        openProjectFileDialog.FileName = string.Empty;
         openProjectFileDialog.Filter = MyStrings.ProjectFile;
+        openProjectFileDialog.FileName = string.Empty;
 
         if (openProjectFileDialog.ShowDialog() == DialogResult.OK)
         {
-            File.Copy(openProjectFileDialog.FileName, _dbFileName, true);
-
-            using var context = new ProjectContext(_dbFileName);
-            var settings = context.Settings.Include(x => x.RootNode).First();
-
-            _root = settings.RootNode?.Name;
-            _fontSize = settings.FontSize;
-            _nodesCounter = settings.NodesCounter;
-            _currentFont = new Font("Arial", _fontSize);
-
-            _nodes.Clear();
-
-            var nodes = context.Nodes.ToArray();
-
-            foreach (var node in nodes)
-            {
-                _nodes.Add(node);
-            }
-
-            UpdateTransitions();
-
-            _selected = null;
-            DisplayNode(null);
-            DrawNodes();
+            _editor.OpenProject(openProjectFileDialog.FileName);
         }
     }
 
     private void OnExportToolStripMenuItemClick(object sender, EventArgs e)
     {
-        if (_root == null)
+        if (_editor.HasRoot == false)
         {
-            MessageBox.Show(MyStrings.NoRoot);
+            MessageBox.Show(
+                MyStrings.NoRoot,
+                MyStrings.Error, 
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
+                );
+
             return;
         }
 
         exportFileDialog.Title = MyStrings.Export;
         exportFileDialog.Filter = MyStrings.ExportFile;
+        exportFileDialog.FileName = string.Empty;
 
         if (exportFileDialog.ShowDialog() == DialogResult.OK)
         {
-            using var projectContext = new ProjectContext(_dbFileName);
+            _editor.Export(exportFileDialog.FileName);
 
-            var settings = projectContext.Settings.
-                AsNoTracking().
-                Include(x => x.RootNode).
-                First();
-
-            var nodes = projectContext.Nodes.
-                AsNoTracking().
-                ToArray();
-
-            var transitions = projectContext.Transitions.
-                AsNoTracking().
-                Include(x => x.From).
-                Include(x => x.To).
-            ToArray();
-
-            File.Delete(exportFileDialog.FileName);
-            using var exportContext = new ExportContext(exportFileDialog.FileName);
-            exportContext.Database.EnsureCreated();
-
-            var exportNodes = new List<ExportNode>();
-            var exportTransitions = new List<ExportTransition>();
-
-            foreach (var transition in transitions)
-            {
-                if (exportNodes.Any(x => x.Id == transition.From.Id) == false)
-                {
-                    exportNodes.Add(new ExportNode
-                    {
-                        Id = transition.From.Id,
-                        Name = transition.From.Name,
-                        Text = transition.From.Text,
-                        Image = transition.From.Image,
-                        IsRoot = transition.From.Id == settings.RootNode!.Id
-                    });
-                }
-
-                if (exportNodes.Any(x => x.Id == transition.To.Id) == false)
-                {
-                    exportNodes.Add(new ExportNode
-                    {
-                        Id = transition.To.Id,
-                        Name = transition.To.Name,
-                        Text = transition.To.Text,
-                        Image = transition.To.Image,
-                        IsRoot = transition.To.Id == settings.RootNode!.Id,
-                    });
-                }
-
-                exportContext.Transitions.Add(new ExportTransition 
-                { 
-                    Id = transition.Id,
-                    Name = transition.Name,
-                    From = exportNodes.First(x => x.Id == transition.From.Id),
-                    To = exportNodes.First(x => x.Id == transition.To.Id)
-                }
+            MessageBox.Show(
+                MyStrings.Exported,
+                MyStrings.Info,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
                 );
-            }
-
-            exportContext.SaveChanges();
-
-            MessageBox.Show(MyStrings.Exported);
         }
     }
 
@@ -717,5 +390,10 @@ public partial class MainForm : Form
     private void OnRussianToolStripMenuItemClick(object sender, EventArgs e)
     {
         ChangeLanguage("ru-RU");
+    }
+
+    private void OnGraphPictureSizeChanged(object sender, EventArgs e)
+    {
+        _editor.GraphImageSize = graphPicture.Size;
     }
 }

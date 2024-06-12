@@ -78,6 +78,7 @@ partial class MainForm
         resources.ApplyResources(graphPicture, "graphPicture");
         graphPicture.Name = "graphPicture";
         graphPicture.TabStop = false;
+        graphPicture.SizeChanged += OnGraphPictureSizeChanged;
         graphPicture.MouseDown += OnGraphPictureMouseDown;
         graphPicture.MouseMove += OnGraphPictureMouseMove;
         graphPicture.MouseUp += OnGraphPictureMouseUp;

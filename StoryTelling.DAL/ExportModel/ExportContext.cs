@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
-namespace StoryTelling.DAL.Export;
+namespace StoryTelling.DAL.ExportModel;
 
 public class ExportContext(string dbFileName) : DbContext
 {

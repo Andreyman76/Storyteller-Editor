@@ -14,8 +14,8 @@
         <GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
     </PropertyGroup>
     <ItemGroup>
+      <ProjectReference Include="..\StoryTelling.BLL\StoryTelling.BLL.csproj" />
       <ProjectReference Include="..\StoryTelling.DAL\StoryTelling.DAL.csproj" />
-      <ProjectReference Include="..\StoryTelling.Entites\StoryTelling.Entites.csproj" />
     </ItemGroup>
     <ItemGroup>
       <Compile Update="Properties\Settings.Designer.cs">

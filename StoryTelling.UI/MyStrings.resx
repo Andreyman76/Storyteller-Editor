@@ -123,6 +123,9 @@
   <data name="EnterNewStoryId" xml:space="preserve">
     <value>Enter new id for story "@id".</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Export story</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="ImageFiles" xml:space="preserve">
     <value>Image files (*.bmp, *.dib, *.jpg, *.jpeg, *.jpe, *.jfif, *.png, *.gif, *.tif, *.tiff, *.wmf)|*.bmp;*.dib;*.jpg;*.jpeg;*.jpe;*.jfif;*.png;*.gif;*.tif;*.tiff;*.wmf;</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Information</value>
   </data>
   <data name="NeedSelectTransition" xml:space="preserve">
     <value>Please, select transition from the list.</value>
@@ -173,5 +179,8 @@
   </data>
   <data name="TransitionExists" xml:space="preserve">
     <value>A transition with the same name already exists in story "@id"!</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
   </data>
 </root>

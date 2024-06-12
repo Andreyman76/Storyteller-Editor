@@ -1,4 +1,4 @@
-﻿namespace StoryTelling.DAL.Project;
+﻿namespace StoryTelling.DAL.ProjectModel;
 
 public class ProjectSettings
 {

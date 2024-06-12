@@ -1,7 +1,7 @@
-﻿using StoryTelling.DAL.Project;
+﻿using StoryTelling.DAL.ProjectModel;
 using System.Drawing;
 
-namespace StoryTelling.Entities;
+namespace StoryTelling.BLL.Entities;
 
 public class Node(string name, Point position)
 {

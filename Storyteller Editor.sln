@@ -5,8 +5,6 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoryTelling.DAL", "StoryTelling.DAL\StoryTelling.DAL.csproj", "{03B2711E-EDC8-45DC-9E68-512A091EBDD7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoryTelling.Entites", "StoryTelling.Entites\StoryTelling.Entites.csproj", "{53B2429F-F892-4B8D-9DBE-F6E0439AF4EA}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{61770C8A-7976-4C17-A9AC-E1E2EA5A10D9}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -14,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoryTelling.UI", "StoryTelling.UI\StoryTelling.UI.csproj", "{127B83ED-1215-4A6B-B645-86773E2FB1AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoryTelling.BLL", "StoryTelling.BLL\StoryTelling.BLL.csproj", "{6B6D8361-D183-4844-A77E-CF90B0E84C37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoryTelling.BLL", "StoryTelling.BLL\StoryTelling.BLL.csproj", "{6B6D8361-D183-4844-A77E-CF90B0E84C37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +24,6 @@ Global
 		{03B2711E-EDC8-45DC-9E68-512A091EBDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03B2711E-EDC8-45DC-9E68-512A091EBDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03B2711E-EDC8-45DC-9E68-512A091EBDD7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53B2429F-F892-4B8D-9DBE-F6E0439AF4EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53B2429F-F892-4B8D-9DBE-F6E0439AF4EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53B2429F-F892-4B8D-9DBE-F6E0439AF4EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53B2429F-F892-4B8D-9DBE-F6E0439AF4EA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{127B83ED-1215-4A6B-B645-86773E2FB1AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{127B83ED-1215-4A6B-B645-86773E2FB1AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{127B83ED-1215-4A6B-B645-86773E2FB1AD}.Release|Any CPU.ActiveCfg = Release|Any CPU

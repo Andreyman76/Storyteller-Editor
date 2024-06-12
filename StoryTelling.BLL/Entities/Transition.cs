@@ -1,6 +1,6 @@
-﻿using StoryTelling.DAL.Project;
+﻿using StoryTelling.DAL.ProjectModel;
 
-namespace StoryTelling.Entities;
+namespace StoryTelling.BLL.Entities;
 
 public class Transition(string name, string from, string to)
 {

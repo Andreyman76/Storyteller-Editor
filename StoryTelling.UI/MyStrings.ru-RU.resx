@@ -123,6 +123,9 @@
   <data name="EnterNewStoryId" xml:space="preserve">
     <value>Введите новый id для истории "@id".</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
   <data name="Export" xml:space="preserve">
     <value>Экспорт рассказа</value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="ImageFiles" xml:space="preserve">
     <value>Изображения (*.bmp, *.dib, *.jpg, *.jpeg, *.jpe, *.jfif, *.png, *.gif, *.tif, *.tiff, *.wmf)|*.bmp;*.dib;*.jpg;*.jpeg;*.jpe;*.jfif;*.png;*.gif;*.tif;*.tiff;*.wmf;</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Информация</value>
   </data>
   <data name="NeedSelectTransition" xml:space="preserve">
     <value>Пожалуйста, выберите переход из списка.</value>
@@ -173,5 +179,8 @@
   </data>
   <data name="TransitionExists" xml:space="preserve">
     <value>Переход с таким же именем уже существует в истории "@id"!</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Предупреждение</value>
   </data>
 </root>

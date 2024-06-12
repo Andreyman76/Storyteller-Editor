@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StoryTelling.DAL.Export;
+namespace StoryTelling.DAL.ExportModel;
 
 public class ExportTransition
 {

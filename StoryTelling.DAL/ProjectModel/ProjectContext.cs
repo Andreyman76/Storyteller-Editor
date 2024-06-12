@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
-namespace StoryTelling.DAL.Project;
+namespace StoryTelling.DAL.ProjectModel;
 
 public class ProjectContext(string dbFileName) : DbContext
 {

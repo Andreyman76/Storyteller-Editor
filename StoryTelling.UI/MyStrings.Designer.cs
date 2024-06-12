@@ -274,4 +274,37 @@ internal class MyStrings
             return ResourceManager.GetString("TransitionExists", resourceCulture);
         }
     }
+
+    /// <summary>
+    ///   Ищет локализованную строку, похожую на Information
+    /// </summary>
+    internal static string Info
+    {
+        get
+        {
+            return ResourceManager.GetString("Info", resourceCulture);
+        }
+    }
+
+    /// <summary>
+    ///   Ищет локализованную строку, похожую на Warning
+    /// </summary>
+    internal static string Warning
+    {
+        get
+        {
+            return ResourceManager.GetString("Warning", resourceCulture);
+        }
+    }
+
+    /// <summary>
+    ///   Ищет локализованную строку, похожую на Error
+    /// </summary>
+    internal static string Error
+    {
+        get
+        {
+            return ResourceManager.GetString("Error", resourceCulture);
+        }
+    }
 }
